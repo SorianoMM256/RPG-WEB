@@ -1,11 +1,14 @@
 import Link from "next/link";
+import "../globals.css";
+import "./equipe.css"
 
 export default function Equipe(){
     return(
-        <main className = "equipe">
+        <main>
             
             <div className="Santanas">
-                <img src= "/public/teste.png" id="nome"></img>
+                <div className="icon"><img src= "/01.jpg" id="nome"></img></div>
+                <div className="info">
                 <p>Nome: Maria Eduarda de Jesus Santana</p>
                 <p>Info: Que vai me ver em todo lugar.
                     Vai desenhar meu olhar no céu
@@ -19,10 +22,12 @@ export default function Equipe(){
                     É que eu não sou pura
                     Você vai se entregar, e eu vou te amar
                     Mas eu não quero ser sua</p>
+                </div>
             </div>
 
             <div className="Mathos">
-                <img src= "/public/teste.png" id="nome"></img>
+                <div className="icon"><img src= "/02.jpg" id="nome"></img></div>
+                <div className="info">
                 <p>Nome: Matheus Motta Soriano</p>
                 <p>Info: Se droga fosse álcool eu morria de cirrose
                 Se álcool fosse droga eu morria de overdose
@@ -35,10 +40,12 @@ export default function Equipe(){
 
                 Eu sou o vampiro doidão, eu sou o vampiro doidão
                 Só faço sexo dentro do caixão</p>
+                </div>
             </div>
 
             <div className="OHomiDasCarcaErguida">
-                <img src= "/public/teste.png" id="nome"></img>
+                <div className="icon"><img src= "/03.jpg" id="nome"></img></div>
+                <div className="info">
                 <p>Nome: Sofia Nogueira Batista</p>
                 <p>Info: Tu me traíste com o preto do cigano
                 Agora vou te arrebentar o cu com o cano
@@ -49,6 +56,7 @@ export default function Equipe(){
                 Que só quer é putaria
                 Mas agora apanhaste SIDA
                 E quem fuder contigo é suicida</p>
+                </div>
             </div>
             
         </main>

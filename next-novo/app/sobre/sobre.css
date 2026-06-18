@@ -1,0 +1,30 @@
+.sobre{
+    margin: 120px auto;    
+    height: 600px;
+    width: 70%;
+    border: solid black 2px;
+    border-radius: 15px;
+    background-color: white;
+    display: flex;
+    flex-direction: column; 
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+p{
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+#p1,#p4{
+    text-align: center;
+    font-weight: bold;
+    font-size: xx-large;
+}
+
+#p2,#p3{
+   text-align: center; 
+   font-size: xx-large;
+}
+
