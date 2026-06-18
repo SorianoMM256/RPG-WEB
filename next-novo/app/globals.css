@@ -1,11 +1,23 @@
+@font-face{
+  font-family: 'EnchantedLand';
+  src : url(./fonts/enchanted_land/Enchanted\ Land.otf) format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'EnchantedLand',sans-serif;
+}
+
+html, body, * {
+  cursor: url('https://cdn.cursors-4u.net/previews/king-arthur-s-sword-excalibur-9b59c137-32.webp') 37 37, auto !important;
 }
 
 header{
-  background-color: rgb(97, 18, 245);
+  background-color: black;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -41,26 +53,44 @@ main{
   font-weight: bold;
   color: white;
   font-size:xx-large;
+  transition: transform 0.3s ease, text-shadow 0.3s ease, color 0.3s ease;
+}
+
+.Equipe:hover,.Ajuda:hover,.Sobre:hover,.Home:hover{
+  transform: scale(1.1);
+  text-shadow: 
+        0 0 10px rgba(228, 227, 223, 0.6),  
+        0 0 20px rgba(99, 98, 98, 0.4),  
+        0 0 30px rgba(68, 68, 67, 0.2);
+}
+
+.Equipe:active,.Ajuda:active,.Sobre:active,.Home:active{
+  box-shadow: inset 1px 1px 2px 0px rgba(0, 0, 0, 0.5); 
+  transform: translateY(2px); 
 }
 
 .login{
-  justify-self: end;
-  position: relative;
-  width: 150px;
-  height: 55px;
-  border-radius: 45px;
-  border: none;
-  background-color: rgb(151, 95, 255);
-  color: white;
-  box-shadow: 0px 10px 10px rgb(210, 187, 253) inset,
-  0px 5px 10px rgba(5, 5, 5, 0.212),
-  0px -10px 10px rgb(124, 54, 255) inset;
+  padding: 10px 20px;
+  width: 200px;
+  text-align: center;
+  background-color: #795649; 
+  color: #f4e5c3; 
+  border: 2px solid #c0a080; 
+  border-radius: 30px;
+  font-size: xx-large;
+  text-shadow: 1px 1px 0px #a67c52; 
+  box-shadow: 2px 2px 0px #a67c52; 
+  border-radius: 4px; 
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transition: all 0.3s ease;
   text-decoration: none;
+  }
+
+.login:active{
+  box-shadow: inset 1px 1px 2px 0px rgba(0, 0, 0, 0.5); 
+  transform: translateY(2px); 
 }
+
 
 
 

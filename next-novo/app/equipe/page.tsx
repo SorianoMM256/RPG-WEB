@@ -9,7 +9,7 @@ export default function Equipe(){
             <div className="Santanas">
                 <div className="icon"><img src= "/01.jpg" id="nome"></img></div>
                 <div className="info">
-                <p>Nome: Maria Eduarda de Jesus Santana</p>
+                <p id='nome'>Maria Eduarda de Jesus Santana</p>
                 <p>Info: Que vai me ver em todo lugar.
                     Vai desenhar meu olhar no céu
                     Que meu amor tem gosto de mel
@@ -28,7 +28,7 @@ export default function Equipe(){
             <div className="Mathos">
                 <div className="icon"><img src= "/02.jpg" id="nome"></img></div>
                 <div className="info">
-                <p>Nome: Matheus Motta Soriano</p>
+                <p id='nome'>Matheus Motta Soriano</p>
                 <p>Info: Se droga fosse álcool eu morria de cirrose
                 Se álcool fosse droga eu morria de overdose
 
@@ -43,10 +43,12 @@ export default function Equipe(){
                 </div>
             </div>
 
+            
+
             <div className="OHomiDasCarcaErguida">
                 <div className="icon"><img src= "/03.jpg" id="nome"></img></div>
                 <div className="info">
-                <p>Nome: Sofia Nogueira Batista</p>
+                <p id='nome'>Sofia Nogueira Batista</p>
                 <p>Info: Tu me traíste com o preto do cigano
                 Agora vou te arrebentar o cu com o cano
                 Vou te partir as teclas desse piano
@@ -60,5 +62,6 @@ export default function Equipe(){
             </div>
             
         </main>
+
     );
 }
