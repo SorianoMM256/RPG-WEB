@@ -11,7 +11,7 @@ export default function Home(){
             <h1>Seja Bem-Vindo Viajante</h1>
             <p>De um upgrade no seu RPG</p>
             </div>
-            <Link href="/create" className="criarConta">Criar Conta</Link>
+            <Link href="/criarconta" className="criarConta">Criar Conta</Link>
             </div>
         </main>
     );

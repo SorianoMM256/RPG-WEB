@@ -1,6 +1,12 @@
 import "./globals.css";
 import Link from "next/link";
 import React from "react";
+import { MedievalSharp } from 'next/font/google';
+
+const medievalSharp = MedievalSharp({
+  weight: '400',
+  subsets: ['latin'],
+});
 
 interface LayoutProps {
   children: React.ReactNode;

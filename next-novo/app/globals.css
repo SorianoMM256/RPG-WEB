@@ -1,15 +1,8 @@
-@font-face{
-  font-family: 'EnchantedLand';
-  src : url(./fonts/enchanted_land/Enchanted\ Land.otf) format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'EnchantedLand',sans-serif;
+    font-family: 'MedievalSharp',sans-serif;
 }
 
 html, body, * {
@@ -54,6 +47,11 @@ main{
   color: white;
   font-size:xx-large;
   transition: transform 0.3s ease, text-shadow 0.3s ease, color 0.3s ease;
+  text-shadow: 
+    0px 0px 5px rgba(0, 0, 0, 0.9), 
+    0px 0px 5px rgba(0, 0, 0, 0.9),
+    0px 0px 3px rgba(0, 0, 0, 0.9),
+    0px 0px 3px rgba(0, 0, 0, 0.9);
 }
 
 .Equipe:hover,.Ajuda:hover,.Sobre:hover,.Home:hover{
@@ -73,18 +71,27 @@ main{
   padding: 10px 20px;
   width: 200px;
   text-align: center;
-  background-color: #795649; 
-  color: #f4e5c3; 
-  border: 2px solid #c0a080; 
+  background-color: #33302e; 
+  color: white; 
+  border: 2px solid white; 
   border-radius: 10px;
   font-size: xx-large;
-  text-shadow: 1px 1px 0px #a67c52; 
-  box-shadow: 2px 2px 0px #a67c52; 
+  text-shadow: 1px 1px 0px #dee7dc; 
+  box-shadow: 2px 2px 0px #5a544e; 
   border-radius: 4px; 
   cursor: pointer;
-  transition: all 0.3s ease;
   text-decoration: none;
+  box-shadow: 
+    0px 0px 5px rgba(0, 0, 0, 0.9), 
+    0px 0px 5px rgba(0, 0, 0, 0.9),
+    0px 0px 3px rgba(0, 0, 0, 0.9),
+    0px 0px 3px rgba(0, 0, 0, 0.9);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
+
+.login:hover{
+  transform: scale(1.1);
+}
 
 .login:active{
   box-shadow: inset 1px 1px 2px 0px rgba(0, 0, 0, 0.5); 

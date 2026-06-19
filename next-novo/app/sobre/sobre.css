@@ -1,7 +1,7 @@
 .sobre{
     margin: 120px auto;    
-    height: 600px;
-    width: 70%;
+    height: 700px;
+    width: 85%;
     border: solid black 2px;
     border-radius: 15px;
     background-color: white;
@@ -10,21 +10,48 @@
     gap: 20px;
     justify-content: center;
     align-items: center;
+    color: black;
+
+    background-image: url('/pergaminho02.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    background-color: transparent;
+    filter: drop-shadow(0px 15px 10px rgba(0, 0, 0, 0.7));
+
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+
+    transition: transform 0.4s ease, filter 0.4s ease;
+    cursor: pointer;
 }
 
-p{
-    margin-left: 40px;
-    margin-right: 40px;
+.sobre:hover{
+    transform: translateY(-8px) scale(1.01);
+    
+    filter: drop-shadow(0px 25px 30px rgba(0, 0, 0, 0.95));
+}
+
+#p1,#p2,#p3,#p4{
+    margin-left: 120px;
+    margin-right: 120px;
+}
+
+#p1:hover,#p2:hover,#p3:hover,#p4:hover{
+    color: #1a0f07; 
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
 }
 
 #p1,#p4{
     text-align: center;
-    font-weight: bold;
+    font-weight: 800;
     font-size: xx-large;
 }
 
 #p2,#p3{
    text-align: center; 
+   font-weight: 550;
    font-size: xx-large;
 }
 
