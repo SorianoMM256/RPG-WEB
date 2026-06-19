@@ -17,7 +17,7 @@ html, body, * {
 }
 
 header{
-  background-color: black;
+  background-color: rgb(7, 1, 36);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -76,7 +76,7 @@ main{
   background-color: #795649; 
   color: #f4e5c3; 
   border: 2px solid #c0a080; 
-  border-radius: 30px;
+  border-radius: 10px;
   font-size: xx-large;
   text-shadow: 1px 1px 0px #a67c52; 
   box-shadow: 2px 2px 0px #a67c52; 
