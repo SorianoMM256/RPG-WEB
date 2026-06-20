@@ -37,7 +37,7 @@ main{
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 130px;
+  gap: 60px;
   flex-grow: 1;
 }
 

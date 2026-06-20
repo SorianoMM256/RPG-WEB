@@ -9,7 +9,7 @@ export default function Home(){
             <div className='A2'>
             <div className="texto">
             <h1>Seja Bem-Vindo Viajante</h1>
-            <p>De um upgrade no seu RPG</p>
+            <p className="upgrade">De um upgrade no seu RPG</p>
             </div>
             <Link href="/criarconta" className="criarConta">Criar Conta</Link>
             </div>
