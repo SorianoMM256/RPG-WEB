@@ -9,9 +9,10 @@
 
 #foto{
   width: 400px;
-  height: 600px;
+  height: 700px;
   justify-self: start;
   grid-area: A1;
+  padding-top: 30px;
   
 }
 

@@ -1,13 +1,12 @@
-import Link from "next/link";
+import "../globals.css";
+import "./criar.css"
 
 export default function Login(){
     return(
         <main>
-
-            <button>Criar</button>
             
             <div className="CriarBox">
-                <img src= "/public/teste.png" id="nome"></img>
+                <img src= "/teste.png" id="logo"></img>
                 <label htmlFor="nome">Nome:</label>
                 <input type='text' id="nome" name = 'nome'></input>
                 <label htmlFor="email">Email:</label>
@@ -17,8 +16,8 @@ export default function Login(){
                 <label htmlFor="confirmacao">Confirme a senha:</label>
                 <input type='text' id="confirmacao" name = 'confirmacao'></input>
 
-                <button>Criar</button>
-                <button>Cancelar</button>
+                <button className="btncriar">Criar</button>
+                <button className="btncancelar">Cancelar</button>
             </div>
         </main>
     );

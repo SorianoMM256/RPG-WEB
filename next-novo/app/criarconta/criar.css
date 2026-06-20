@@ -1,0 +1,65 @@
+.CriarBox{
+
+    margin: 60px auto;    
+    width: 100%;
+    max-width: 500px; 
+    min-height: 600px; 
+    height: auto;
+    padding: 60px 140px;
+    display: flex;
+    flex-direction: column; 
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    color: black;
+
+    background-image: url('/pergaminho03.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    background-color: transparent;
+    filter: drop-shadow(0px 15px 10px rgba(0, 0, 0, 0.7));
+
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+
+    transition: transform 0.4s ease, filter 0.4s ease;
+    cursor: pointer;
+}
+
+.CriarBox:hover{
+    transform: translateY(-8px) scale(1.01);
+    
+    filter: drop-shadow(0px 25px 30px rgba(0, 0, 0, 0.95));
+}
+
+#nome,#email,#senha,#confirmacao{
+    width: 250px;
+    height: 25px;
+    border: solid 2px black;
+    border-radius: 12px;
+    text-align: center;
+}
+
+label{
+    font-size: 20px;
+}
+
+.btncriar,.btncancelar{
+    width: 120px;
+    height: 30px;
+    border: solid 2px rgba(56, 46, 13, 0.4);
+    border-radius: 7px;
+    background-color: rgb(240, 203, 125);
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.btncriar:hover,.btncancelar:hover{
+
+    transform: translateY(-8px) scale(1.01);
+    
+    filter: drop-shadow(0px 25px 30px rgba(212, 175, 55, 0.4));
+
+}
