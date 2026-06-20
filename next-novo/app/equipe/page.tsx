@@ -7,10 +7,11 @@ export default function Equipe(){
         <main>
             
             <div className="Santanas">
-                <div className="icon"><img src= "/01.jpg" id="nome"></img></div>
+                <div className='conteudo'>
+                <div className="icon"><img src="/01.jpg" alt="Personagem" /></div>
                 <div className="info">
-                <p id='nome'>Maria Eduarda de Jesus Santana</p>
-                <p>Info: Que vai me ver em todo lugar.
+                <p className='titulo-personagem'>Maria Eduarda de Jesus Santana</p>
+                <p className= 'texto-info'>Que vai me ver em todo lugar.
                     Vai desenhar meu olhar no céu
                     Que meu amor tem gosto de mel
                     Parei de brincar, só vou se você
@@ -23,13 +24,15 @@ export default function Equipe(){
                     Você vai se entregar, e eu vou te amar
                     Mas eu não quero ser sua</p>
                 </div>
+                </div>
             </div>
 
             <div className="Mathos">
-                <div className="icon"><img src= "/02.jpg" id="nome"></img></div>
+                <div className='conteudo'>
+                <div className="icon"><img src="/02.jpg" alt="Personagem" /></div>
                 <div className="info">
-                <p id='nome'>Matheus Motta Soriano</p>
-                <p>Info: Se droga fosse álcool eu morria de cirrose
+                <p className="titulo-personagem">Matheus Motta Soriano</p>
+                <p className="texto-info">Se droga fosse álcool eu morria de cirrose
                 Se álcool fosse droga eu morria de overdose
 
                 Sou vampiro doidão, sou o vampiro doidão
@@ -41,15 +44,17 @@ export default function Equipe(){
                 Eu sou o vampiro doidão, eu sou o vampiro doidão
                 Só faço sexo dentro do caixão</p>
                 </div>
+                </div>
             </div>
 
             
 
             <div className="OHomiDasCarcaErguida">
-                <div className="icon"><img src= "/03.jpg" id="nome"></img></div>
+                <div className='conteudo'>
+                <div className="icon"><img src="/03.jpg" alt="Personagem" /></div>
                 <div className="info">
-                <p id='nome'>Sofia Nogueira Batista</p>
-                <p>Info: Tu me traíste com o preto do cigano
+                <p className="titulo-personagem">Sofia Nogueira Batista</p>
+                <p className="texto-info">Tu me traíste com o preto do cigano
                 Agora vou te arrebentar o cu com o cano
                 Vou te partir as teclas desse piano
                 E a tua cona cheira a frango
@@ -58,6 +63,7 @@ export default function Equipe(){
                 Que só quer é putaria
                 Mas agora apanhaste SIDA
                 E quem fuder contigo é suicida</p>
+                </div>
                 </div>
             </div>
             

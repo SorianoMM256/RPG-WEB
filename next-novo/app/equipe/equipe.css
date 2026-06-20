@@ -1,13 +1,11 @@
 .Santanas,.Mathos,.OHomiDasCarcaErguida{
-    width: 75%;
-    margin-top: 40px;
+    width: 1000px;
     height: 480px;
-    display: grid;
-    grid-template-areas: "A1 A2";
-    grid-template-columns: 320px 1fr;
-    column-gap: 20px;
-    padding: 40px 0px;
+    padding: 40px 150px;
+    display: flex;
     align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
 
     background-image: url('/pergaminho.png');
     background-size: 100% 100%;
@@ -23,6 +21,17 @@
     transition: transform 0.4s ease, filter 0.4s ease;
     cursor: pointer;
 
+}
+
+.conteudo{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    width: 100%;
+    max-width: 620px; 
+    margin: 0 auto 0 65px; 
+    gap: 20px; 
+    height: 100%;
 }
 
 .Santanas:hover, .Mathos:hover, .OHomiDasCarcaErguida:hover {
@@ -49,11 +58,15 @@
 }
 
 .icon{
-    grid-area: A1;
-    width: 300px;
-    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1 / 1; 
+    max-width: 210px;
+    margin: 0; 
+    border-radius: 12px; 
     overflow: hidden;
-    margin-left: 300px;
+    flex-shrink: 0;
 }
 
 .icon img{
@@ -64,19 +77,30 @@
 }
 
 .info{
-    grid-area: A2;
     display: flex;
-    flex-direction: column; 
-    gap: 15px;
-    margin-left: 250px;
-    margin-right: 210px;
-    font-size: 20px;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    height: 100%;
+    max-height: 320px; 
+    overflow-y: auto;  
+    color: #000;  
+    padding-top: 20px;     
+    padding-bottom: 20px; 
+    padding-right: 10px;  
+    box-sizing: border-box;  
 }
 
-#nome{
-    font-size:30px;
+.titulo-personagem {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
     font-weight: bold;
-    white-space: nowrap;
-    
+    color: #111;
+}
+
+.texto-info {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    white-space: pre-line; 
 }
 
