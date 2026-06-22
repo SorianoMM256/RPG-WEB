@@ -1,0 +1,58 @@
+.sobre{
+    margin: 60px auto;    
+    width: 100%;
+    max-width: 950px; 
+    min-height: 600px; 
+    height: auto;
+    padding: 60px 140px;
+    display: flex;
+    flex-direction: column; 
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    color: black;
+
+    background-image: url('/pergaminho02.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    background-color: transparent;
+    filter: drop-shadow(0px 15px 10px rgba(0, 0, 0, 0.7));
+
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+
+    transition: transform 0.4s ease, filter 0.4s ease;
+    cursor: pointer;
+    
+}
+
+.sobre:hover{
+    transform: translateY(-8px) scale(1.01);
+    
+    filter: drop-shadow(0px 25px 30px rgba(0, 0, 0, 0.95));
+}
+
+.paragrafo-sobre {
+    margin: 0; 
+    text-align: center;
+    color: black;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.paragrafo-sobre:hover {
+    color: #1a0f07; 
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+}
+
+.destaque {
+    font-weight: 800;
+    font-size: 27px;
+}
+
+.corpo {
+    font-weight: 550;
+    font-size: 24px;
+}

@@ -1,0 +1,103 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'MedievalSharp',sans-serif;
+}
+
+html, body, * {
+  cursor: url('https://cdn.cursors-4u.net/previews/king-arthur-s-sword-excalibur-9b59c137-32.webp') 37 37, auto !important;
+}
+
+header{
+  background-color: rgb(7, 1, 36);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  min-height: 80px;
+}
+
+main{
+  background-image: url("/back02.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+#logo{
+  width: 270px;
+  height: auto;
+  justify-self: start;
+}
+
+.menu-nav{
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 60px;
+  flex-grow: 1;
+}
+
+.Tutorial{
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+  font-size:xx-large;
+  transition: transform 0.3s ease, text-shadow 0.3s ease, color 0.3s ease;
+  text-shadow: 
+    0px 0px 5px rgba(0, 0, 0, 0.9), 
+    0px 0px 5px rgba(0, 0, 0, 0.9),
+    0px 0px 3px rgba(0, 0, 0, 0.9),
+    0px 0px 3px rgba(0, 0, 0, 0.9);
+}
+
+.Tutorial:hover{
+  transform: scale(1.1);
+  text-shadow: 
+        0 0 10px rgba(228, 227, 223, 0.6),  
+        0 0 20px rgba(99, 98, 98, 0.4),  
+        0 0 30px rgba(68, 68, 67, 0.2);
+}
+
+.Tutorial:active{
+  box-shadow: inset 1px 1px 2px 0px rgba(0, 0, 0, 0.5); 
+  transform: translateY(2px); 
+}
+
+.side-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: rgb(0, 0, 0);
+}
+
+.Cards,.Feedback{
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+  font-size:xx-large;
+  transition: transform 0.3s ease, text-shadow 0.3s ease, color 0.3s ease;
+  text-shadow: 
+    0px 0px 5px rgba(0, 0, 0, 0.9), 
+    0px 0px 5px rgba(0, 0, 0, 0.9),
+    0px 0px 3px rgba(0, 0, 0, 0.9),
+    0px 0px 3px rgba(0, 0, 0, 0.9);
+    
+}
+
+.Cards:hover,.Feedback:hover{
+  transform: scale(1.1);
+  text-shadow: 
+        0 0 10px rgba(228, 227, 223, 0.6),  
+        0 0 20px rgba(99, 98, 98, 0.4),  
+        0 0 30px rgba(68, 68, 67, 0.2);
+}
+
+.Cards:active,.Feedback:hover{
+  box-shadow: inset 1px 1px 2px 0px rgba(0, 0, 0, 0.5); 
+  transform: translateY(2px); 
+}
+
