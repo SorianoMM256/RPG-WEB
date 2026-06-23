@@ -27,7 +27,9 @@ export default function RootLayout({children}:LayoutProps){
             <nav className="menu-nav">
             <Link href="/Tutorial" className="tutorial">Tutorial</Link>    
             </nav>
+            <div className="container-avatar">
             <button className="btnperfil" onClick={() => setMenuAberto(!menuAberto)}><img src="/avatar.png" className="avatar" id="avatar"></img></button>
+            
             {menuAberto && (
                 <div className="menuzinho">
                    <Link href="/verPerfil" className="ver">Ver Perfil</Link>
@@ -35,6 +37,7 @@ export default function RootLayout({children}:LayoutProps){
                    <Link href="/logout" className="logout">Exit</Link> 
                 </div>
             )}
+            </div>
             </header>
 
             <div className="conteudo">
