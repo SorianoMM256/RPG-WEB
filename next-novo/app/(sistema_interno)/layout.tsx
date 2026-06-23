@@ -25,18 +25,19 @@ export default function RootLayout({children}:LayoutProps){
             <img src= "/teste.png" id="logo"/>
 
             <nav className="menu-nav">
-            <Link href="/Tutorial" className="Home">Tutorial</Link>    
+            <Link href="/Tutorial" className="tutorial">Tutorial</Link>    
             </nav>
-            <button className="btnperfil" onClick={() => setMenuAberto(!menuAberto)}><img src="/avatar.png" className="avatar"></img></button>
+            <button className="btnperfil" onClick={() => setMenuAberto(!menuAberto)}><img src="/avatar.png" className="avatar" id="avatar"></img></button>
             {menuAberto && (
                 <div className="menuzinho">
-                   <Link href="/verPerfil" className="Home">Ver Perfil</Link>
-                   <Link href="/editarPerfil" className="Home">Editar Perfil</Link>
-                   <Link href="/logout" className="Home">Exit</Link> 
+                   <Link href="/verPerfil" className="ver">Ver Perfil</Link>
+                   <Link href="/editarPerfil" className="editar">Editar Perfil</Link>
+                   <Link href="/logout" className="logout">Exit</Link> 
                 </div>
             )}
             </header>
 
+            <div className="conteudo">
             <aside>
             <nav className="side-bar">
             <Link href="/meusCards" className="Cards">Meus Cards</Link>    
@@ -44,7 +45,9 @@ export default function RootLayout({children}:LayoutProps){
             </nav>
             </aside>
 
-            <main>{children}</main>
+            <main className="main_interno">{children}</main>
+            </div>
+
             </body>
         </html>
     );
