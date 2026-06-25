@@ -1,58 +1,152 @@
-.sobre{
-    margin: 60px auto;    
-    width: 100%;
-    max-width: 950px; 
-    min-height: 600px; 
-    height: auto;
-    padding: 60px 140px;
-    display: flex;
-    flex-direction: column; 
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    color: black;
-
-    background-image: url('/pergaminho02.png');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    border: none;
-    background-color: transparent;
-    filter: drop-shadow(0px 15px 10px rgba(0, 0, 0, 0.7));
-
-    image-rendering: pixelated;
-    image-rendering: crisp-edges;
-
-    transition: transform 0.4s ease, filter 0.4s ease;
-    cursor: pointer;
-    
+.carrossel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
+  margin: 40px 0;
+}
+.cards {
+  position: relative;
+  width: 450px;  
+  height: 350px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.sobre:hover{
-    transform: translateY(-8px) scale(1.01);
-    
-    filter: drop-shadow(0px 25px 30px rgba(0, 0, 0, 0.95));
+.card-rpg {
+  position: absolute;
+  width: 220px;
+  height: 320px;
+  background-color: #fffdec; 
+  border: 4px solid #1c4217; 
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0px 10px 20px rgba(0,0,0,0.3);
+  
+  transition: transform 0.4s ease, z-index 0.4s ease, opacity 0.4s ease;
+  color: #000;
 }
 
-.paragrafo-sobre {
-    margin: 0; 
-    text-align: center;
-    color: black;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
+.card-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  object-fit: cover;
 }
 
-.paragrafo-sobre:hover {
-    color: #1a0f07; 
-    text-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+.card-esquerda {
+  z-index: 1;
+  transform: translateX(-100px) translateY(15px) rotate(-15deg) scale(0.9);
+  opacity: 0.8;
 }
 
-.destaque {
-    font-weight: 800;
-    font-size: 27px;
+.card-centro {
+  z-index: 10;
+  transform: translateX(0) translateY(0) rotate(0deg) scale(1);
+  opacity: 1;
+  box-shadow: 0px 15px 30px rgba(0,0,0,0.5);
 }
 
-.corpo {
-    font-weight: 550;
-    font-size: 24px;
+.card-direita {
+  z-index: 1;
+  transform: translateX(100px) translateY(15px) rotate(15deg) scale(0.9);
+  opacity: 0.8;
 }
+
+.card-escondido {
+  transform: scale(0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+.setas {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.seta:hover {
+  transform: scale(1.15);
+}
+
+.img-seta {
+  width: 60px;
+  height: auto;
+}
+
+.container {
+  position: relative;
+  display: flex;         
+  justify-content: center; 
+  align-items: center; 
+  gap: 20px;
+}
+
+.texto{
+  position: absolute;
+  left: calc(50% + 40px); 
+  margin-left: 10px;
+  
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform-origin: left center;
+  transform: scale(1);
+  
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  
+  background-color: #141414;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+
+  text-shadow: 
+        0 0 10px rgba(228, 227, 223, 0.6),  
+        0 0 20px rgba(99, 98, 98, 0.4),  
+        0 0 30px rgba(68, 68, 67, 0.2);
+  
+}
+
+.container:hover .texto {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(2);
+}
+
+.container:hover{
+  transform: scale(1.1);
+  text-shadow: 
+        0 0 10px rgba(228, 227, 223, 0.6),  
+        0 0 20px rgba(99, 98, 98, 0.4),  
+        0 0 30px rgba(68, 68, 67, 0.2);
+}
+
+.add{
+   width: 90px;
+   height: 90px;
+   border-radius: 10px;
+   border: solid 2px black;
+   font-size: xx-large;
+}
+
+.AVISO{
+
+   font-weight: bold;
+   color: white;
+   font-size: 60px;
+   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8);
+   font-weight: 850px;
+   margin-bottom: 20px;
+   text-align: center;
+
+}
+
