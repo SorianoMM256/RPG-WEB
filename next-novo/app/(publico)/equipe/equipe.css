@@ -1,4 +1,4 @@
-.Santanas,.Mathos,.OHomiDasCarcaErguida{
+.Santana,.Matheus,.Sofia{
     width: 1000px;
     height: 480px;
     padding: 40px 150px;
@@ -34,7 +34,7 @@
     height: 100%;
 }
 
-.Santanas:hover, .Mathos:hover, .OHomiDasCarcaErguida:hover {
+.Santana:hover, .Matheus:hover, .Sofia:hover {
     transform: translateY(-8px) scale(1.01);
     
     filter: drop-shadow(0px 25px 30px rgba(0, 0, 0, 0.95));
@@ -44,16 +44,16 @@
     transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
-.Santanas:hover .info p,.Mathos:hover .info p,.OHomiDasCarcaErguida:hover .info p {
+.Santana:hover .info p,.Matheus:hover .info p,.Sofia:hover .info p {
     color: #1a0f07; 
     text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
 }
 
-.Santanas,.OHomiDasCarcaErguida{
+.Santana,.Sofia{
     margin: 40px auto 40px 20px;
 }
 
-.Mathos{
+.Matheus{
     margin: 40px 20px 40px auto;
 }
 
@@ -63,14 +63,12 @@
     align-items: center;
     aspect-ratio: 1 / 1; 
     max-width: 210px;
-    margin: 0; 
-    border-radius: 12px; 
-    overflow: hidden;
+    margin: 0;  
     flex-shrink: 0;
 }
 
 .icon img{
-    width: 100%;
+    width: 104%;
     height: 100%;
     object-fit: cover;
     
@@ -99,8 +97,13 @@
 }
 
 .texto-info {
-    font-size: 0.95rem;
+    font-size: 1rem;
     line-height: 1.4;
     white-space: pre-line; 
+}
+
+.link01,.link02,.link03,.link04,.link05,.link06{
+    text-decoration: none;
+    font-size: 1.2rem;
 }
 
