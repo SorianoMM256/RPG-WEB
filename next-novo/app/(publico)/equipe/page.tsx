@@ -21,7 +21,7 @@ export default function Equipe(){
 
             <div className="Matheus">
                 <div className='conteudo'>
-                <div className="icon"><img src="/02.jpg" alt="Personagem" /></div>
+                <div className="icon"><img src="/05.png" alt="Personagem" /></div>
                 <div className="info">
                 <p className="titulo-personagem">Matheus Motta Soriano</p>
                 <p className="texto-info">Graduando em Sistemas de Informação Bacharelado pela Universidade Federal de Itajubá - UNIFEI. Técnico em TI pelo IFSuldeMinas <br></br>

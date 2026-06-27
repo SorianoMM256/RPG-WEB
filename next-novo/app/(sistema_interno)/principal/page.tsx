@@ -1,4 +1,5 @@
 'use client';
+import Link from "next/link";
 import "../sistema.css";
 import "./principal.css"
 import { useState } from 'react';
@@ -85,8 +86,7 @@ export default function Pagina() {
       )}
 
         <div className="container">
-        <button className="add">+</button>
-        <span className="texto">Criar</span>
+        <Link href='/criar' className="add" data-back="Criar" data-front="+"></Link>
         </div>
          
         </main>
