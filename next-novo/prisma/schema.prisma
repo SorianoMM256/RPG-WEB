@@ -1,0 +1,42 @@
+datasource db {
+  provider = "sqlite" // Se estiver usando SQLite
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String
+  password  String
+  npcs      Npc[]
+  createdAt DateTime @default(now())
+}
+
+model Npc {
+  id           String   @id @default(uuid())
+  name         String
+  alignment    String   
+  race         String   
+  className    String   
+
+  strength     Int      @default(10)
+  dexterity    Int      @default(10)
+  constitution Int      @default(10)
+  intelligence Int      @default(10)
+  wisdom       Int      @default(10)
+  charisma     Int      @default(10)
+
+  // Mudamos String[] para String
+  skills       String   @default("") // Vamos salvar como: "athletics,stealth"
+  equipment    String   @default("") // Vamos salvar como: "longsword,shield"
+
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
