@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect, useState } from "react";
 import "../globals.css";
 import "./criar.css";
 import { criarConta, type FormState } from "@/actions/criarconta"; // chama a funcao e oq vai usar dela!
@@ -8,6 +8,7 @@ import { criarConta, type FormState } from "@/actions/criarconta"; // chama a fu
 //precisa tipar a funcao para que seja enviado e retornado infos com o mesmo formato!
 const initialState: FormState = {
   msg: "",
+  sucesso: false,
   fields: { nome: "", email: "" },
 }; //msg inicial!!!
 
@@ -16,11 +17,45 @@ export default function Login() {
   //os HOOKS (Use...) so podem ser chamados dentro do corpo principal
   const [state, formAction, pending] = useActionState(criarConta, initialState);
 
+  const [alerta, setAlerta] = useState<{
+    msg: string;
+    tipo: "erro" | "sucesso";
+  } | null>(null);
+
+  useEffect(() => {
+    // o ?. serve para verificar se TEM algo novo.
+    if (state?.msg) {
+      //cria o alerta!
+      setAlerta({
+        msg: state.msg,
+        tipo: state.sucesso ? "sucesso" : "erro",
+      });
+
+      //bomba relogio! pra sumir a msg
+      const timer = setTimeout(() => {
+        setAlerta(null);
+      }, 4000);
+
+      //limpa o temporizador caso clique dnv
+      return () => clearTimeout(timer);
+    }
+  }, [state]);
+
   return (
     <main>
       <div className="CriarBox">
         <img src="/teste.png" id="logo"></img>
-        {state?.msg && <p>{state.msg}</p>}
+        {/* verifica se alerta existe */}
+        {alerta && (
+          <div className={`alerta-container ${alerta.tipo}`}>
+            {" "}
+            {/* serve p ver se eh erro ou sucesso!!! muda a variavel*/}
+            <span className="alerta-icone">
+              {alerta.tipo === "sucesso" ? "✓" : "⚠"}
+            </span>
+            <p className="alerta-texto">{alerta.msg}</p>
+          </div>
+        )}
         <form action={formAction}>
           <label htmlFor="nome">Nome:</label>
           <input
