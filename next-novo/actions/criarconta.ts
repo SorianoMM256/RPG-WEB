@@ -5,6 +5,7 @@ import bcrypt from "bcrypt";
 
 export type FormState = {
   msg: string;
+  sucesso: boolean;
   fields: {
     nome: string;
     email: string;
@@ -27,7 +28,7 @@ export async function criarConta(
 
   if (!email || !nome || !senha || !confirmacao) {
     //retorna fields e msg pro frontend
-    return { msg: "Preencha todas as informações!", fields };
+    return { msg: "Preencha todas as informações!", sucesso: false, fields };
   }
 
   // 1. verificar se o email ja ta cadastrado
@@ -38,6 +39,7 @@ export async function criarConta(
   if (usuarioExistente) {
     return {
       msg: "Email já está em uso! Adicione outro.",
+      sucesso: false,
       fields, //sempre retorna o fields!
     };
   }
@@ -45,6 +47,7 @@ export async function criarConta(
   if (senha != confirmacao) {
     return {
       msg: "As senhas estão incompatíveis.",
+      sucesso: false,
       fields,
     };
   }
@@ -62,6 +65,7 @@ export async function criarConta(
 
   return {
     msg: `Bem-vindo ${nome}, conta criada!`,
+    sucesso: true,
     fields: { nome: "", email: "" }, //zerando o campo!
   };
 }
