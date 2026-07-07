@@ -4,6 +4,7 @@ import { useActionState, useEffect, useState } from "react";
 import "../globals.css";
 import "./criar.css";
 import { criarConta, type FormState } from "@/actions/criarconta"; // chama a funcao e oq vai usar dela!
+import { useRouter } from "next/navigation"; //o default eh importar next/router, mas ROUTER da erro
 
 //precisa tipar a funcao para que seja enviado e retornado infos com o mesmo formato!
 const initialState: FormState = {
@@ -13,6 +14,9 @@ const initialState: FormState = {
 }; //msg inicial!!!
 
 export default function Login() {
+  //funcao pra redirecionar caso cancele!!!
+  const router = useRouter();
+
   //eh aqui que pegamos a funcao que vai fazer a pagina funcionar!
   //os HOOKS (Use...) so podem ser chamados dentro do corpo principal
   const [state, formAction, pending] = useActionState(criarConta, initialState);
@@ -81,7 +85,11 @@ export default function Login() {
             {pending ? "Criando..." : "Criar"}
           </button>
           {/* o tipo de cancelar PRECISA ser "button", senao ele da submit (opcao default)! */}
-          <button className="btncancelar" type="button">
+          <button
+            className="btncancelar"
+            type="button"
+            onClick={() => router.push("/inicio")}
+          >
             Cancelar
           </button>
         </form>
