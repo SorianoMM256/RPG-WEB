@@ -4,6 +4,7 @@ import "./sistema.css";
 import Link from "next/link";
 import {use, useState} from "react";
 import { MedievalSharp } from 'next/font/google';
+import { useRouter } from 'next/navigation';
 
 const medievalSharp = MedievalSharp({
   weight: '400',
@@ -16,6 +17,12 @@ interface LayoutProps {
 
 export default function RootLayout({children}:LayoutProps){
 
+    const router = useRouter();
+
+    function abrirModal() {
+    router.push('/editarperfil?upload=true');
+    }
+
     const [menuAberto,setMenuAberto] = useState(false);
     return (
         <html lang = "pt-br">
@@ -25,15 +32,15 @@ export default function RootLayout({children}:LayoutProps){
             <img src= "/teste.png" id="logo"/>
 
             <nav className="menu-nav">
-            <Link href="/Tutorial" className="tutorial">Tutorial</Link>    
+            <Link href="/tutorial" className="tutorial">Tutorial</Link>    
             </nav>
             <div className="container-avatar">
             <button className="btnperfil" onClick={() => setMenuAberto(!menuAberto)}><img src="/avatar.png" className="avatar" id="avatar"></img></button>
             
             {menuAberto && (
                 <div className="menuzinho">
-                   <Link href="/verPerfil" className="ver">Ver Perfil</Link>
-                   <Link href="/editarPerfil" className="editar">Editar Perfil</Link>
+                   <Link href="/verperfil" className="ver">Ver Perfil</Link>
+                   <button onClick={abrirModal} className="editar">Editar Perfil</button>
                    <Link href="/logout" className="logout">Exit</Link> 
                 </div>
             )}
@@ -43,7 +50,7 @@ export default function RootLayout({children}:LayoutProps){
             <div className="conteudo">
             <aside>
             <nav className="side-bar">
-            <Link href="/meusCards" className="Cards">Meus Cards</Link>    
+            <Link href="/meuscads" className="Cards">Meus Cards</Link>    
             <Link href="/feedback" className="Feedback">Seu Feedback</Link>
             </nav>
             </aside>
