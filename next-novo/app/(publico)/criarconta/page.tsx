@@ -81,7 +81,12 @@ export default function Login() {
           <input type="password" id="confirmacao" name="confirmacao"></input>
           {/* EXPLICANDO O DISABLED. pending significa "o formulario esta sendo enviado?"
           se sim, mostra o CRIANDO.... se não, mostra CRIAR */}
-          <button className="btncriar" type="submit" disabled={pending}>
+          <button
+            className="btncriar"
+            type="submit"
+            onClick={() => router.push("/principal")}
+            disabled={pending}
+          >
             {pending ? "Criando..." : "Criar"}
           </button>
           {/* o tipo de cancelar PRECISA ser "button", senao ele da submit (opcao default)! */}
