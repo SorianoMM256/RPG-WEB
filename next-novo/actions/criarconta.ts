@@ -12,11 +12,12 @@ export type FormState = {
   };
 };
 
+//essa eh uma estrutura padrao pra lidar com formularios
 //precisa ser | undefined pra qnd a pagina iniciar!
 export async function criarConta(
-  state: FormState | undefined,
-  formData: FormData,
-): Promise<FormState> {
+  state: FormState | undefined, //ele rastreia o que aconteceu na última tentativa de envio, ex: senha errada
+  formData: FormData, //carrega todos os inputs do formulário de forma segura
+): Promise<FormState> /* a funcao fala com o banco de dados e retorna algo, que eh a promise: o novo estado */ {
   //pegando informacoes!
   const nome = formData.get("nome")?.toString() || "";
   const email = formData.get("email")?.toString() || "";
