@@ -73,7 +73,12 @@ export default function Login() {
           <label htmlFor="loginsenha">Senha:</label>
           <input type="password" id="loginsenha" name="senha"></input>
 
-          <button type="submit" className="btnlogar" disabled={pending}>
+          <button
+            className="btnlogar"
+            type="submit"
+            onClick={() => router.push("/principal")}
+            disabled={pending}
+          >
             {pending ? "Entrando..." : "Entrar"} {/* Ou um ou outro! */}
           </button>
 
