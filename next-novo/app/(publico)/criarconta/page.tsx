@@ -35,6 +35,14 @@ export default function Login() {
         tipo: state.sucesso ? "sucesso" : "erro",
       });
 
+      //redirecionamento!
+      // PRECISA FAZER AQUI, ja que so entra caso haja VALIDAÇÃO
+      if (state.sucesso) {
+        const timerRouter = setTimeout(() => {
+          router.push("/principal");
+        });
+      }
+
       //bomba relogio! pra sumir a msg
       const timer = setTimeout(() => {
         setAlerta(null);
@@ -81,12 +89,7 @@ export default function Login() {
           <input type="password" id="confirmacao" name="confirmacao"></input>
           {/* EXPLICANDO O DISABLED. pending significa "o formulario esta sendo enviado?"
           se sim, mostra o CRIANDO.... se não, mostra CRIAR */}
-          <button
-            className="btncriar"
-            type="submit"
-            onClick={() => router.push("/principal")}
-            disabled={pending}
-          >
+          <button className="btncriar" type="submit" disabled={pending}>
             {pending ? "Criando..." : "Criar"}
           </button>
           {/* o tipo de cancelar PRECISA ser "button", senao ele da submit (opcao default)! */}
