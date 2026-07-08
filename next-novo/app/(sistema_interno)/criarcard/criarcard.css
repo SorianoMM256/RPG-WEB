@@ -1,0 +1,111 @@
+.cardPage{
+
+    width:100%;
+
+    max-width:1100px;
+
+    margin:auto;
+
+    padding:30px;
+
+}
+
+.cardPage h1{
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+}
+
+.cardForm{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+}
+
+.formSection{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+.formSection label{
+
+    font-weight:bold;
+
+}
+
+.formSection input{
+
+    padding:10px;
+
+    border-radius:8px;
+
+    border:1px solid #ccc;
+
+}
+
+.formSection select{
+
+    padding:10px;
+
+    border-radius:8px;
+
+}
+
+.attributesGrid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:20px;
+
+}
+
+.attribute{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.attribute input{
+
+    padding:10px;
+
+    text-align:center;
+
+}
+
+.buttons{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+}
+
+.buttons button{
+
+    padding:12px 24px;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+}
