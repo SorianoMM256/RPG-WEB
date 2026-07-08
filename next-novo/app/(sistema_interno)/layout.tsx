@@ -41,7 +41,7 @@ export default function RootLayout({children}:LayoutProps){
                 <div className="menuzinho">
                    <Link href="/verperfil" className="ver">Ver Perfil</Link>
                    <button onClick={abrirModal} className="editar">Editar Perfil</button>
-                   <Link href="/logout" className="logout">Exit</Link> 
+                   <button className="logout">Exit</button> 
                 </div>
             )}
             </div>
@@ -50,7 +50,7 @@ export default function RootLayout({children}:LayoutProps){
             <div className="conteudo">
             <aside>
             <nav className="side-bar">
-            <Link href="/meuscads" className="Cards">Meus Cards</Link>    
+            <Link href="/principal" className="Cards">Home</Link>    
             <Link href="/feedback" className="Feedback">Seu Feedback</Link>
             </nav>
             </aside>

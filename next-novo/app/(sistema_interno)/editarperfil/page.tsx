@@ -78,7 +78,7 @@ function EditarPerfil(){
 
           <h2 className="titulo">EDITAR PERFIL</h2>
 
-          <div className="conteudo">
+          <div className="conteudoModal">
             <button
               className="avatarUpload"
               onClick={handleUploadClick}
@@ -103,10 +103,15 @@ function EditarPerfil(){
               onChange={handleFileChange}
               style={{ display: 'none' }}
             />
-
+            <div className='A2'>
+            <form>
             <div className="campos">
               <input type="text"className="nome"placeholder="Nome de usuário"/>
               <input type="email"className="email"placeholder="Email"/>
+            </div>
+
+            <button className='Botao'>Salvar</button>
+            </form>
             </div>
           </div>
           </div>

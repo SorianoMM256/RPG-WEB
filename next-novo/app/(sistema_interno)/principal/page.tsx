@@ -86,7 +86,7 @@ export default function Pagina() {
       )}
 
         <div className="container">
-        <Link href='/criar' className="add" data-back="Criar" data-front="+"></Link>
+        <Link href='/criarcard' className="add" data-back="Criar" data-front="+"></Link>
         </div>
          
         </main>
