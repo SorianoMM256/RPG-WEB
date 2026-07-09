@@ -172,3 +172,23 @@
     color:gray;
     font-size:12px;
 }
+
+.erro {
+    display: block;
+    margin-top: 4px;
+    color: #d32f2f;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+input:invalid,
+select:invalid {
+    border: 1px solid #d32f2f;
+}
+
+input:focus:invalid,
+select:focus:invalid {
+    outline: none;
+    box-shadow: 0 0 4px #d32f2f;
+}
+
