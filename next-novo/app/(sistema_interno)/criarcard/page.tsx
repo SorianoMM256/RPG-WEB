@@ -28,6 +28,8 @@ interface Skill {
 export default function CreateCardPage() {
   const [aberto, setAberto] = useState(false);
   const [skills, setSkills] = useState<Skill[]>([]);
+  const [classes, setClasses] = useState<any[]>([]);
+  const [racas, setRacas] = useState<any[]>([]);
   const [npc, setNpc] = useState<NpcForm>({
     nome: "",
     classe: "",
@@ -42,19 +44,45 @@ export default function CreateCardPage() {
     carisma: 0,
   });
 
-//  useEffect(() => {
-  //  async function buscarSkills() {
-//      try {
-      //  const response = await fetch('/api/skills');
-    //    const data = await response.json();
-  //      setSkills(data);
-//      } catch (erro) {
-      //  console.error('Erro ao buscar skills:', erro);
-    //  }
-  //  }
-//
-  //  buscarSkills();
-//  }, []);
+  useEffect(() => {
+
+      async function carregarDados() {
+
+          try {
+
+              const [skillsReq, classesReq, racasReq] = await Promise.all([
+                  fetch("https://www.dnd5eapi.co/api/skills"),
+                  fetch("https://www.dnd5eapi.co/api/classes"),
+                  fetch("https://www.dnd5eapi.co/api/races")
+              ]);
+
+              const skillsData = await skillsReq.json();
+              const classesData = await classesReq.json();
+              const racasData = await racasReq.json();
+
+              setSkills(
+                  skillsData.results.map((item:any)=>({
+                      nome:item.name,
+                      atributo:"",
+                      valor:0,
+                      selecionado:false
+                  }))
+              );
+
+              setClasses(classesData.results);
+              setRacas(racasData.results);
+
+          } catch(err){
+
+              console.error(err);
+
+          }
+
+      }
+
+      carregarDados();
+
+  },[]);
 
 
   function alternarSelecionado(index: number) {
@@ -122,6 +150,15 @@ export default function CreateCardPage() {
             onChange={(e) => alterarCampo("classe", e.target.value)}
           >
             <option value="">Selecione uma classe</option>
+
+            {classes.map(classe=>(
+                <option
+                    key={classe.index}
+                    value={classe.name}
+                >
+                    {classe.name}
+                </option>
+            ))}
           </select>
 
         </div>
@@ -135,6 +172,15 @@ export default function CreateCardPage() {
             onChange={(e) => alterarCampo("raca", e.target.value)}
           >
             <option value="">Selecione uma raça</option>
+
+            {racas.map(raca=>(
+                <option
+                    key={raca.index}
+                    value={raca.name}
+                >
+                    {raca.name}
+                </option>
+            ))}
           </select>
 
         </div>
