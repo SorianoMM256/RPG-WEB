@@ -10,7 +10,7 @@ export default async function Home() {
 
   return (
     <main className="pagina">
-      <img src="/Jedi.png" id="foto"></img>
+      <img src="/mago03.png" id="foto"></img>
       <div className="A2">
         <div className="texto">
           <h1>Seja Bem-Vindo Viajante</h1>
