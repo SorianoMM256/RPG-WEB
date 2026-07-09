@@ -12,6 +12,7 @@ model User {
   email     String   @unique
   name      String
   password  String
+  foto String?
   npcs      Npc[]
   createdAt DateTime @default(now())
 }
@@ -21,7 +22,8 @@ model Npc {
   name         String
   alignment    String   
   race         String   
-  className    String   
+  className    String
+  or
 
   strength     Int      @default(10)
   dexterity    Int      @default(10)
