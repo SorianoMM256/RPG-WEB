@@ -109,3 +109,66 @@
     font-weight:bold;
 
 }
+
+.skillsBox{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.skillsCabecalho{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px;
+    cursor:pointer;
+    border-radius:8px;
+    border:1px solid #ccc;
+    background:white;
+}
+
+.seta{
+    transition:.3s;
+}
+
+.seta.aberta{
+    transform:rotate(180deg);
+}
+
+.skillsLista{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+
+    max-height:300px;
+    overflow-y:auto;
+
+    border:1px solid #ccc;
+    border-radius:8px;
+    padding:12px;
+}
+
+.skillLinha{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.skillCheckbox{
+    width:18px;
+    height:18px;
+}
+
+.skillValor{
+    width:70px;
+    padding:6px;
+}
+
+.skillNome{
+    flex:1;
+}
+
+.skillAtributo{
+    color:gray;
+    font-size:12px;
+}
