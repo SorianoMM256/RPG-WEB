@@ -120,6 +120,39 @@ export default function CreateCardPage() {
     );
   }
 
+  async function salvarNPC(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    const body = {
+      ...npc,
+      skills: skills
+        .filter(skill => skill.selecionado)
+        .map(skill => skill.nome),
+
+      userId: "", // será preenchido pela autenticação
+    };
+
+    try {
+      const response = await fetch("/api/npcs", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
+
+      if (!response.ok) {
+        throw new Error("Erro ao criar NPC");
+      }
+
+      alert("NPC criado com sucesso!");
+
+    } catch (error) {
+      console.error(error);
+      alert("Erro ao criar NPC.");
+    }
+  }
+
   return (
     <main className="cardPage">
 
@@ -127,8 +160,8 @@ export default function CreateCardPage() {
 
       <form
         className="cardForm"
-        onSubmit={(e) => e.preventDefault()}
-      > 
+        onSubmit={salvarNPC}
+      >
 
         <div className="formSection">
           <label>Nome</label>
