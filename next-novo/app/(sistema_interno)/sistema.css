@@ -1,0 +1,191 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'MedievalSharp',sans-serif;
+}
+
+html, body, * {
+  cursor: url('https://cdn.cursors-4u.net/previews/king-arthur-s-sword-excalibur-9b59c137-32.webp') 37 37, auto !important;
+}
+
+header{
+  background-color: rgb(7, 1, 36);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  min-height: 80px;
+}
+
+#logo{
+  width: 270px;
+  height: auto;
+  justify-self: start;
+}
+
+#avatar{
+  width: 100px;
+  height: auto;
+  cursor: pointer;
+  display: block;
+}
+
+.menu-nav{
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-right: 60px;
+  flex-grow: 1;
+}
+
+
+.Cards,.Feedback{
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+  font-size:xx-large;
+  transition: transform 0.3s ease, text-shadow 0.3s ease, color 0.3s ease;
+  text-shadow: 
+    0px 0px 5px rgba(0, 0, 0, 0.9), 
+    0px 0px 5px rgba(0, 0, 0, 0.9),
+    0px 0px 3px rgba(0, 0, 0, 0.9),
+    0px 0px 3px rgba(0, 0, 0, 0.9);
+    
+}
+
+.Cards:hover,.Feedback:hover{
+  transform: scale(1.1);
+  text-shadow: 
+        0 0 10px rgba(228, 227, 223, 0.6),  
+        0 0 20px rgba(99, 98, 98, 0.4),  
+        0 0 30px rgba(68, 68, 67, 0.2);
+}
+
+.Cards:active,.Feedback:hover{
+  box-shadow: inset 1px 1px 2px 0px rgba(0, 0, 0, 0.5); 
+  transform: translateY(2px); 
+}
+
+.conteudo{
+  display: flex; 
+  width: 100%;
+  min-height: 100vh; 
+  margin: 0;
+}
+
+.side-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  background-color: rgb(0, 0, 0);
+  align-items: center;
+  flex: 0 0 240px;
+  padding-top: 40px;
+  box-sizing: border-box;
+  height: 100%;
+  align-content: center;
+  justify-content: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.main_interno{
+  flex: 1; 
+  min-height: 100vh;
+  padding: 0px; 
+  box-sizing: border-box;
+  background-image: url("/back04.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.menuzinho{
+  position: absolute;
+  top: 100%;       
+  right: 0;       
+  margin-top: 10px; 
+  z-index: 999;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: rgb(0, 0, 0);
+  align-items: center;
+  border: 2px solid white;
+  border-radius: 8px;
+  box-sizing: border-box;
+  align-content: center;
+  justify-content: center;
+  padding: 15px 20px;
+  box-sizing: border-box;
+  width: 180px;
+
+  left: 50%;                
+  transform: translateX(-50%);
+  
+}
+
+.container-avatar {
+  position: relative;
+  display: inline-block;
+}
+
+.btnperfil {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  transition: transform 0.3s ease, text-shadow 0.3s ease, color 0.3s ease;
+}
+
+.btnperfil:hover{
+
+  transform: scale(1.1);
+}
+
+.menuzinho a, .menuzinho button {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  width: 100%;
+  text-align: center;
+  transition: transform 0.2s ease, color 0.2s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+}
+
+.menuzinho a:hover, .menuzinho button:hover {
+  color: #e4e3df;
+  transform: scale(1.05);
+}
+
+/* Remove qualquer estilo, borda ou fundo do botão */
+.btnperfil {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+}
+
+/* Deixa a foto 100% redonda e limpa */
+.avatar {
+  width: 50px;          /* Ajuste o tamanho (largura) que preferir aqui */
+  height: 50px;         /* A altura DEVE ser exatamente igual à largura */
+  border-radius: 10%;   /* Deixa perfeitamente redondo */
+  object-fit: cover;    /* Recorta imagens retangulares para virarem um círculo perfeito */
+  border: none;         /* Garante que não haverá nenhuma borda */
+  box-shadow: none;     /* Garante que não haverá nenhuma sombra */
+}

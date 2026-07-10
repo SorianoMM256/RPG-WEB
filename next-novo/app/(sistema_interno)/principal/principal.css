@@ -1,0 +1,330 @@
+.carrossel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
+  margin: 40px 0;
+}
+.cards {
+  position: relative;
+  width: 450px;  
+  height: 350px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-rpg {
+  position: absolute;
+  width: 220px;
+  height: 320px;
+  background-image: url("/pergaminho03.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  background-color: #e2d1b6; 
+  border-radius: 14px;
+  background-color: transparent;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0px 10px 20px rgba(0,0,0,0.3);
+  
+  transition: transform 0.4s ease, z-index 0.4s ease, opacity 0.4s ease;
+  color: #000;
+}
+
+.card-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.card-esquerda {
+  z-index: 1;
+  transform: translateX(-100px) translateY(15px) rotate(-15deg) scale(0.9);
+  opacity: 1;
+}
+
+.card-centro {
+  z-index: 10;
+  transform: translateX(0) translateY(0) rotate(0deg) scale(1);
+  opacity: 1;
+  box-shadow: 0px 15px 30px rgba(0,0,0,0.5);
+}
+
+.card-direita {
+  z-index: 1;
+  transform: translateX(100px) translateY(15px) rotate(15deg) scale(0.9);
+  opacity: 1;
+}
+
+.card-escondido {
+  transform: scale(0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+.setas {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, text-shadow 0.3s ease, color 0.3s ease;
+}
+
+.setas:hover {
+  transform: scale(1.1);
+}
+
+.img-seta {
+  width: 60px;
+  height: auto;
+}
+
+.container {
+  position: relative;
+  display: flex;         
+  justify-content: center; 
+  align-items: center; 
+  gap: 20px;
+}
+
+.texto{
+  position: absolute;
+  left: calc(50% + 40px); 
+  margin-left: 10px;
+  
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform-origin: left center;
+  transform: scale(1);
+  
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  
+  background-color: #141414;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+
+  text-shadow: 
+        0 0 10px rgba(228, 227, 223, 0.6),  
+        0 0 20px rgba(99, 98, 98, 0.4),  
+        0 0 30px rgba(68, 68, 67, 0.2);
+
+  
+}
+
+.container:hover .texto {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(2);
+}
+
+.container:hover{
+  transform: scale(1.1);
+  text-shadow: 
+        0 0 10px rgba(228, 227, 223, 0.6),  
+        0 0 20px rgba(99, 98, 98, 0.4),  
+        0 0 30px rgba(68, 68, 67, 0.2);
+}
+
+.add{
+  opacity: 1;
+  outline: 0;
+  color: #fff;
+  position: relative;
+  text-align: center;
+  letter-spacing: 1px;
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  
+  width: 120px;
+  height: 50px;
+  
+  transform-style: preserve-3d;
+  
+  &:hover {
+    &:after {
+      opacity: 1;
+      transform: translateY(0) rotateX(0deg);
+    }
+    
+    &:before {
+      opacity: 0;
+      transform: translateY(50%) rotateX(90deg);
+    }
+  }
+  
+  &:after {
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: 0.5s;
+    position: absolute;
+    background: #ec8143;
+    content: attr(data-back);
+    transform: translateY(-50%) rotateX(90deg);
+    border-radius: 8px;
+    border: 2px solid rgb(0, 0, 0);
+    text-shadow: 
+        0 0 10px rgba(0, 0, 0, 0.6),  
+        0 0 20px rgba(0, 0, 0, 0.4),  
+        0 0 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  &:before {
+    top: 0;
+    left: 0;
+    opacity: 1;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem; 
+    width: 100%;
+    height: 100%;
+    transition: 0.5s;
+    position: absolute;
+    background: #973903;
+    content: attr(data-front);
+    transform: translateY(0) rotateX(0deg);
+    border-radius: 8px;
+    border: 2px solid #000000;
+  }
+}
+
+
+.AVISO{
+
+   font-weight: bold;
+   color: rgb(224, 109, 55);
+   font-size: 60px;
+   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8);
+   font-weight: 850px;
+   margin-bottom: 20px;
+   text-align: center;
+
+}
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000; 
+  backdrop-filter: blur(4px); 
+}
+
+.modal-pergaminho {
+  position: relative;
+  width: 450px;
+  height: 600px;
+  background-image: url("/pergaminho02.png"); 
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  padding: 60px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #000;
+  animation: abrirModal 0.3s ease-out;
+}
+
+
+
+.modal-avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 3px solid #000;
+  margin: 15px 0;
+}
+
+.modal-status-grade {
+  width: 100%;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.atributos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.btn-fechar-modal {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  background: #973903;
+  color: white;
+  border: 2px solid #000;
+  border-radius: 5px;
+  width: 30px;
+  height: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+  margin-top: 40px;
+}
+
+.btn-fechar-modal:hover {
+  transform: scale(1.1);
+  background: #bd4a05;
+}
+
+@keyframes abrirModal {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.btn-ex{
+  background: #973903;
+  color: white;
+  border: 2px solid #000;
+  border-radius: 5px;
+  width: 100px;
+  height: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+  margin-top: 40px;
+}
+
+.btn-ex:hover {
+  transform: scale(1.1);
+  background: #bd4a05;
+}

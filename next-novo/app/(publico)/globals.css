@@ -1,0 +1,105 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'MedievalSharp',sans-serif;
+}
+
+html, body, * {
+  cursor: url('https://cdn.cursors-4u.net/previews/king-arthur-s-sword-excalibur-9b59c137-32.webp') 37 37, auto !important;
+}
+
+header{
+  background-color: rgb(7, 1, 36);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  min-height: 80px;
+}
+
+main{
+  background-image: url("/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+#logo{
+  width: 270px;
+  height: auto;
+  justify-self: start;
+}
+
+.menu-nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  flex-grow: 1;
+}
+
+.Equipe,.Ajuda,.Sobre,.Home{
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+  font-size:xx-large;
+  transition: transform 0.3s ease, text-shadow 0.3s ease, color 0.3s ease;
+  text-shadow: 
+    0px 0px 5px rgba(0, 0, 0, 0.9), 
+    0px 0px 5px rgba(0, 0, 0, 0.9),
+    0px 0px 3px rgba(0, 0, 0, 0.9),
+    0px 0px 3px rgba(0, 0, 0, 0.9);
+}
+
+.Equipe:hover,.Ajuda:hover,.Sobre:hover,.Home:hover{
+  transform: scale(1.1);
+  text-shadow: 
+        0 0 10px rgba(228, 227, 223, 0.6),  
+        0 0 20px rgba(99, 98, 98, 0.4),  
+        0 0 30px rgba(68, 68, 67, 0.2);
+}
+
+.Equipe:active,.Ajuda:active,.Sobre:active,.Home:active{
+  box-shadow: inset 1px 1px 2px 0px rgba(0, 0, 0, 0.5); 
+  transform: translateY(2px); 
+}
+
+.login{
+  padding: 10px 20px;
+  width: 200px;
+  text-align: center;
+  background-color: #33302e; 
+  color: white; 
+  border: 2px solid white; 
+  border-radius: 10px;
+  font-size: xx-large;
+  text-shadow: 1px 1px 0px #dee7dc; 
+  box-shadow: 2px 2px 0px #5a544e; 
+  border-radius: 4px; 
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 
+    0px 0px 5px rgba(0, 0, 0, 0.9), 
+    0px 0px 5px rgba(0, 0, 0, 0.9),
+    0px 0px 3px rgba(0, 0, 0, 0.9),
+    0px 0px 3px rgba(0, 0, 0, 0.9);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+.login:hover{
+  transform: scale(1.1);
+}
+
+.login:active{
+  box-shadow: inset 1px 1px 2px 0px rgba(0, 0, 0, 0.5); 
+  transform: translateY(2px); 
+}
+
+
+
+
+
+

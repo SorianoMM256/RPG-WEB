@@ -1,0 +1,468 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { useParams, useRouter } from "next/navigation";
+import "../../sistema.css";
+import "../../../(sistema_interno)/criarcard/criarcard.css";
+import "./editar.css";
+
+interface NpcForm {
+  nome: string;
+  classe: string;
+  raca: string;
+  moral: string;
+  equipamentos: string[];
+  forca: number;
+  destreza: number;
+  constituicao: number;
+  inteligencia: number;
+  sabedoria: number;
+  carisma: number;
+  imagem: string; // 👈 Adicionado na tipagem
+}
+
+interface Skill {
+  nome: string;
+  atributo: string;
+  valor: number;
+  selecionado: boolean;
+}
+
+export default function NpcViewEditPage() {
+  const params = useParams();
+  const router = useRouter();
+  const id = params.id as string;
+
+  const [modoEdicao, setModoEdicao] = useState(false);
+  const [carregando, setCarregando] = useState(true);
+
+  const [aberto, setAberto] = useState(false);
+  const [skills, setSkills] = useState<Skill[]>([]);
+  const [classes, setClasses] = useState<any[]>([]);
+  const [racas, setRacas] = useState<any[]>([]);
+  const [erros, setErros] = useState<Record<string, string>>({});
+
+  const [npc, setNpc] = useState<NpcForm>({
+    nome: "",
+    classe: "",
+    raca: "",
+    moral: "",
+    equipamentos: [],
+    forca: 10,
+    destreza: 10,
+    constituicao: 10,
+    inteligencia: 10,
+    sabedoria: 10,
+    carisma: 10,
+    imagem: "", // 👈 Inicializado vazio
+  });
+
+  useEffect(() => {
+    async function carregarTudo() {
+      try {
+        const [skillsReq, classesReq, racasReq, npcReq] = await Promise.all([
+          fetch("https://www.dnd5eapi.co/api/skills"),
+          fetch("https://www.dnd5eapi.co/api/classes"),
+          fetch("https://www.dnd5eapi.co/api/races"),
+          fetch(`/api/npcs/${id}`),
+        ]);
+
+        const skillsData = await skillsReq.json();
+        const classesData = await classesReq.json();
+        const racasData = await racasReq.json();
+        const npcData = await npcReq.json();
+
+        setClasses(classesData.results);
+        setRacas(racasData.results);
+
+        setNpc({
+          nome: npcData.name,
+          classe: npcData.className,
+          raca: npcData.race,
+          moral: npcData.alignment,
+          equipamentos: npcData.equipment ? npcData.equipment.split(",") : [],
+          forca: npcData.strength,
+          destreza: npcData.dexterity,
+          constituicao: npcData.constitution,
+          inteligencia: npcData.intelligence,
+          sabedoria: npcData.wisdom,
+          carisma: npcData.charisma,
+          imagem: npcData.imagem || "", // 👈 Carrega a imagem que veio do banco
+        });
+
+        const npcsSkills = npcData.skills ? npcData.skills.split(",") : [];
+        setSkills(
+          skillsData.results.map((item: any) => ({
+            nome: item.name,
+            atributo: "",
+            valor: 0,
+            selecionado: npcsSkills.includes(item.name),
+          })),
+        );
+
+        setCarregando(false);
+      } catch (err) {
+        console.error("Erro ao carregar dados:", err);
+        setCarregando(false);
+      }
+    }
+
+    if (id) {
+      carregarTudo();
+    }
+  }, [id]);
+
+  function validarFormulario() {
+    const novosErros: Record<string, string> = {};
+    if (!npc.nome.trim()) novosErros.nome = "Informe o nome.";
+    if (!npc.classe) novosErros.classe = "Escolha uma classe.";
+    if (!npc.raca) novosErros.raca = "Escolha uma raça.";
+    if (!npc.moral.trim()) novosErros.moral = "Informe a moral.";
+
+    const skillsSelecionadas = skills.filter((skill) => skill.selecionado);
+    if (skillsSelecionadas.length === 0) {
+      novosErros.skills = "Selecione pelo menos uma skill no menu acima.";
+    }
+
+    setErros(novosErros);
+    if (Object.keys(novosErros).length > 0)
+      alert("Preencha todos os campos obrigatórios!");
+    return Object.keys(novosErros).length === 0;
+  }
+
+  function alterarCampo(
+    campo: keyof NpcForm,
+    valor: string | number | string[],
+  ) {
+    setNpc((prev) => ({ ...prev, [campo]: valor }));
+  }
+
+  async function atualizarNPC(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (!validarFormulario()) return;
+
+    const body = {
+      ...npc,
+      skills: skills
+        .filter((skill) => skill.selecionado)
+        .map((skill) => skill.nome),
+    };
+
+    try {
+      const response = await fetch(`/api/npcs/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+
+      if (!response.ok) throw new Error("Erro ao atualizar NPC");
+
+      alert("NPC atualizado com sucesso!");
+      setModoEdicao(false);
+    } catch (error) {
+      console.error(error);
+      alert("Erro ao enviar para o banco de dados.");
+    }
+  }
+
+  if (carregando) {
+    return (
+      <main className="cardPage">
+        <h2 style={{ color: "white", textAlign: "center", marginTop: "50px" }}>
+          Carregando NPC...
+        </h2>
+      </main>
+    );
+  }
+
+  // ==========================================
+  // MODO VISUALIZAÇÃO
+  // ==========================================
+  if (!modoEdicao) {
+    return (
+      <main className="cardPage">
+        <div className="modal-pergaminho">
+          <button
+            className="btn-fechar-modal"
+            onClick={() => router.push("/principal")}
+          >
+            Voltar
+          </button>
+
+          <h2 className="modal-titulo">{npc.nome}</h2>
+
+          <div className="modal-avatar-container">
+            <img
+              src={npc.imagem || "/avatar.png"}
+              alt={npc.nome}
+              className="modal-avatar"
+            />
+          </div>
+
+          <div className="modal-status-grade">
+            <p>
+              <strong>Classe:</strong> {npc.classe}
+            </p>
+            <p>
+              <strong>Raça:</strong> {npc.raca}
+            </p>
+            <p>
+              <strong>Moral:</strong> {npc.moral}
+            </p>
+
+            <hr className="modal-divisor" />
+
+            <div className="atributos-grid">
+              <p>STR: {npc.forca}</p>
+              <p>DEX: {npc.destreza}</p>
+              <p>CON: {npc.constituicao}</p>
+              <p>CHA: {npc.carisma}</p>
+              <p>INT: {npc.inteligencia}</p>
+              <p>WIS: {npc.sabedoria}</p>
+            </div>
+
+            <hr className="modal-divisor" />
+
+            <div className="infos-extras">
+              <p>
+                <strong>Skills:</strong>{" "}
+                {skills
+                  .filter((s) => s.selecionado)
+                  .map((s) => s.nome)
+                  .join(", ") || "Nenhuma"}
+              </p>
+              <p>
+                <strong>Equipamentos:</strong>{" "}
+                {npc.equipamentos.length > 0
+                  ? npc.equipamentos.join(", ")
+                  : "Nenhum"}
+              </p>
+            </div>
+
+            <div className="modal-botoes-container">
+              <button className="btn-ex" onClick={() => setModoEdicao(true)}>
+                Editar Informações
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
+  // ==========================================
+  // MODO EDIÇÃO (O Formulário)
+  // ==========================================
+  return (
+    <main className="cardPage modo-edicao-npc">
+      <h1>Editando: {npc.nome}</h1>
+
+      <form className="cardForm" onSubmit={atualizarNPC} noValidate>
+        <div className="formSection">
+          <label>Nome</label>
+          <input
+            type="text"
+            className="nomeNPC"
+            placeholder="Nome"
+            required
+            minLength={3}
+            maxLength={50}
+            value={npc.nome}
+            onChange={(e) => alterarCampo("nome", e.target.value)}
+          />
+          {erros.nome && <span className="erro">{erros.nome}</span>}
+        </div>
+
+        {/* URL DA FOTO DE PERFIL */}
+        <div className="formSection">
+          <label>URL da Foto de Perfil (Link da imagem)</label>
+          <input
+            type="text"
+            placeholder="Cole aqui o endereço da imagem do Pinterest/Google"
+            value={npc.imagem}
+            onChange={(e) => alterarCampo("imagem", e.target.value)}
+          />
+        </div>
+
+        <div className="formSection">
+          <label>Classe</label>
+          <select
+            required
+            value={npc.classe}
+            onChange={(e) => alterarCampo("classe", e.target.value)}
+          >
+            <option value="">Selecione uma classe</option>
+            {classes.map((classe) => (
+              <option key={classe.index} value={classe.name}>
+                {classe.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="formSection">
+          <label>Raça</label>
+          <select
+            required
+            value={npc.raca}
+            onChange={(e) => alterarCampo("raca", e.target.value)}
+          >
+            <option value="">Selecione uma raça</option>
+            {racas.map((raca) => (
+              <option key={raca.index} value={raca.name}>
+                {raca.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="formSection">
+          <label>Bússola Moral</label>
+          <input
+            type="text"
+            className="moral"
+            placeholder="Bússola Moral"
+            required
+            value={npc.moral}
+            onChange={(e) => alterarCampo("moral", e.target.value)}
+          />
+        </div>
+
+        <div className="formSection">
+          <label>Equipamentos</label>
+          <input
+            type="text"
+            placeholder="Ex.: Espada, Escudo"
+            value={npc.equipamentos.join(", ")}
+            onChange={(e) =>
+              alterarCampo(
+                "equipamentos",
+                e.target.value
+                  .split(",")
+                  .map((item) => item.trim())
+                  .filter((item) => item !== ""),
+              )
+            }
+          />
+        </div>
+
+        <div className="skillsBox">
+          <button
+            type="button"
+            className="skillsCabecalho"
+            onClick={() => setAberto(!aberto)}
+          >
+            <span>SKILLS</span>
+            <span className={`seta ${aberto ? "aberta" : ""}`}>▼</span>
+          </button>
+
+          {aberto && (
+            <div className="skillsLista">
+              {skills.map((skill, index) => (
+                <div key={skill.nome} className="skillLinha">
+                  <input
+                    type="checkbox"
+                    checked={skill.selecionado}
+                    onChange={() =>
+                      setSkills((prev) =>
+                        prev.map((s, i) =>
+                          i === index
+                            ? { ...s, selecionado: !s.selecionado }
+                            : s,
+                        ),
+                      )
+                    }
+                    className="skillCheckbox"
+                  />
+                  <span className="skillNome">{skill.nome}</span>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="attributesGrid">
+          <div className="attribute">
+            <label>FOR</label>
+            <input
+              type="number"
+              min={1}
+              max={20}
+              value={npc.forca}
+              onChange={(e) => alterarCampo("forca", Number(e.target.value))}
+            />
+          </div>
+          <div className="attribute">
+            <label>DES</label>
+            <input
+              type="number"
+              min={1}
+              max={20}
+              value={npc.destreza}
+              onChange={(e) => alterarCampo("destreza", Number(e.target.value))}
+            />
+          </div>
+          <div className="attribute">
+            <label>CON</label>
+            <input
+              type="number"
+              min={1}
+              max={20}
+              value={npc.constituicao}
+              onChange={(e) =>
+                alterarCampo("constituicao", Number(e.target.value))
+              }
+            />
+          </div>
+          <div className="attribute">
+            <label>INT</label>
+            <input
+              type="number"
+              min={1}
+              max={20}
+              value={npc.inteligencia}
+              onChange={(e) =>
+                alterarCampo("inteligencia", Number(e.target.value))
+              }
+            />
+          </div>
+          <div className="attribute">
+            <label>SAB</label>
+            <input
+              type="number"
+              min={1}
+              max={20}
+              value={npc.sabedoria}
+              onChange={(e) =>
+                alterarCampo("sabedoria", Number(e.target.value))
+              }
+            />
+          </div>
+          <div className="attribute">
+            <label>CAR</label>
+            <input
+              type="number"
+              min={1}
+              max={20}
+              value={npc.carisma}
+              onChange={(e) => alterarCampo("carisma", Number(e.target.value))}
+            />
+          </div>
+        </div>
+
+        <div className="buttons">
+          <button
+            type="button"
+            className="btnCancelar"
+            onClick={() => setModoEdicao(false)}
+          >
+            Cancelar
+          </button>
+          <button type="submit" className="btnSalvar">
+            Salvar Alterações
+          </button>
+        </div>
+      </form>
+    </main>
+  );
+}

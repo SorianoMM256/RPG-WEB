@@ -1,0 +1,109 @@
+.Santana,.Matheus,.Sofia{
+    width: 1000px;
+    height: 480px;
+    padding: 40px 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+
+    background-image: url('/pergaminho.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    background-color: transparent;
+    filter: drop-shadow(0px 15px 10px rgba(0, 0, 0, 0.7));
+
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+
+    transition: transform 0.4s ease, filter 0.4s ease;
+    cursor: pointer;
+
+}
+
+.conteudo{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    width: 100%;
+    max-width: 620px; 
+    margin: 0 auto 0 65px; 
+    gap: 20px; 
+    height: 100%;
+}
+
+.Santana:hover, .Matheus:hover, .Sofia:hover {
+    transform: translateY(-8px) scale(1.01);
+    
+    filter: drop-shadow(0px 25px 30px rgba(0, 0, 0, 0.95));
+}
+
+.info p, .info h2 {
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.Santana:hover .info p,.Matheus:hover .info p,.Sofia:hover .info p {
+    color: #1a0f07; 
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+}
+
+.Santana,.Sofia{
+    margin: 40px auto 40px 20px;
+}
+
+.Matheus{
+    margin: 40px 20px 40px auto;
+}
+
+.icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1 / 1; 
+    max-width: 210px;
+    margin: 0;  
+    flex-shrink: 0;
+}
+
+.icon img{
+    width: 104%;
+    height: 100%;
+    object-fit: cover;
+    
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    height: 100%;
+    max-height: 320px; 
+    overflow-y: auto;  
+    color: #000;  
+    padding-top: 20px;     
+    padding-bottom: 20px; 
+    padding-right: 10px;  
+    box-sizing: border-box;  
+}
+
+.titulo-personagem {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    font-weight: bold;
+    color: #111;
+}
+
+.texto-info {
+    font-size: 1rem;
+    line-height: 1.4;
+    white-space: pre-line; 
+}
+
+.link01,.link02,.link03,.link04,.link05,.link06{
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+

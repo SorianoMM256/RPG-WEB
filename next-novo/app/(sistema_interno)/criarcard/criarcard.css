@@ -1,0 +1,246 @@
+.cardPage{
+
+    width:100%;
+
+    max-width:1100px;
+
+    margin:auto;
+
+    padding:30px;
+
+}
+
+.cardPage h1{
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+    margin-top: 10px;
+
+    text-decoration: none;
+    font-weight: bold;
+    color: rgb(224, 109, 55);
+    font-size:xx-large;
+    transition: transform 0.3s ease, text-shadow 0.3s ease, color 0.3s ease;
+    text-shadow: 
+    0px 0px 5px rgba(0, 0, 0, 0.9), 
+    0px 0px 5px rgba(0, 0, 0, 0.9),
+    0px 0px 3px rgba(0, 0, 0, 0.9),
+    0px 0px 3px rgba(0, 0, 0, 0.9);
+
+    font-size: 50px;
+
+}
+
+.cardPage h1:hover{
+    transform: scale(1.1);
+    text-shadow: 
+        0 0 10px rgba(235, 91, 8, 0.774),  
+        0 0 20px rgba(99, 98, 98, 0.4),  
+        0 0 30px rgba(68, 68, 67, 0.2);
+}
+
+.cardForm{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+}
+
+.formSection{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+.formSection label{
+
+    font-weight:bold;
+    text-decoration: none;
+    font-weight: bold;
+    color: rgb(252, 247, 244);
+    font-size:large;
+    transition: transform 0.3s ease, text-shadow 0.3s ease, color 0.3s ease;
+    text-shadow: 
+    0px 0px 5px rgba(0, 0, 0, 0.9), 
+    0px 0px 5px rgba(0, 0, 0, 0.9),
+    
+
+}
+
+.formSection input{
+
+    padding:10px;
+
+    border-radius:8px;
+
+    border:1px solid #ccc;
+
+    
+
+}
+
+.formSection input::placeholder{
+    color:black;
+}
+
+.formSection select{
+
+    padding:10px;
+
+    border-radius:8px;
+
+}
+
+.attributesGrid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:20px;
+
+}
+
+.attribute{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.attribute label{
+    font-weight:bold;
+    text-decoration: none;
+    font-weight: bold;
+    color: rgb(252, 247, 244);
+    font-size:large;
+    transition: transform 0.3s ease, text-shadow 0.3s ease, color 0.3s ease;
+    text-shadow: 
+    0px 0px 5px rgba(0, 0, 0, 0.9), 
+    0px 0px 5px rgba(0, 0, 0, 0.9),
+}
+
+.attribute input{
+
+    padding:10px;
+
+    text-align:center;
+
+}
+
+.buttons{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+}
+
+.buttons button{
+
+    padding:12px 24px;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+}
+
+.skillsBox{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.skillsCabecalho{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px;
+    cursor:pointer;
+    border-radius:8px;
+    border:1px solid #ccc;
+    background:white;
+}
+
+.seta{
+    transition:.3s;
+}
+
+.seta.aberta{
+    transform:rotate(180deg);
+}
+
+.skillsLista{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+
+    max-height:300px;
+    overflow-y:auto;
+
+    border:1px solid #ccc;
+    border-radius:8px;
+    padding:12px;
+    background-color: rgb(201, 199, 199);
+    border: solid 2px black;
+}
+
+.skillLinha{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.skillCheckbox{
+    width:18px;
+    height:18px;
+}
+
+.skillValor{
+    width:70px;
+    padding:6px;
+}
+
+.skillNome{
+    flex:1;
+}
+
+.skillAtributo{
+    color:gray;
+    font-size:12px;
+}
+
+.erro {
+    display: block;
+    margin-top: 4px;
+    color: #d32f2f;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+input:invalid,
+select:invalid {
+    border: 1px solid #d32f2f;
+}
+
+input:focus:invalid,
+select:focus:invalid {
+    outline: none;
+    box-shadow: 0 0 4px #d32f2f;
+}
+
