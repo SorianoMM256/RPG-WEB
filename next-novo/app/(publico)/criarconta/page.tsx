@@ -39,7 +39,7 @@ export default function Login() {
       // PRECISA FAZER AQUI, ja que so entra caso haja VALIDAÇÃO
       if (state.sucesso) {
         const timerRouter = setTimeout(() => {
-          router.push("/principal");
+          router.push("/login");
         });
       }
 
