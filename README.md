@@ -11,8 +11,8 @@ Este projeto foi desenvolvido como o Trabalho Final para a disciplina **XDES03 �
 ### 1. Tela de Login e Cadastro de Usuário
 *Interface para autenticação de usuários, contendo validações completas de campos vazios, formato de e-mail, e senha diferente da padrão utilizando a biblioteca Zod.*
 
-![Tela de cadastro](prints/loginPrint.png )
-![Tela de login](prints/CadastresePrint.png)
+![Tela de cadastro](/criar.png )
+![Tela de login](login.png)
 
 ### 2. Páginas de Informações Básicas do pré-sistema
 
