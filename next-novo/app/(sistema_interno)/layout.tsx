@@ -44,11 +44,15 @@ export default function RootLayout({ children }: LayoutProps) {
     router.push("/editarperfil?upload=true");
   }
 
-  async function handleLogout() {
-    const confirmou = window.confirm("Tem certeza que deseja sair?");
-    if (confirmou) {
-      setMenuAberto(false);
-      await deslogarUsuario();
+  async function fazerLogout() {
+    try {
+      // Chama a API que destrói o cookie
+      await fetch("/api/logout", { method: "POST" });
+
+      // Redireciona para a tela de Login
+      window.location.href = "/";
+    } catch (error) {
+      console.error("Erro ao sair:", error);
     }
   }
 
@@ -79,7 +83,7 @@ export default function RootLayout({ children }: LayoutProps) {
                 <button onClick={abrirModal} className="editar">
                   Editar Perfil
                 </button>
-                <button onClick={handleLogout} className="logout">
+                <button onClick={fazerLogout} className="btn-exit">
                   Exit
                 </button>
               </div>
