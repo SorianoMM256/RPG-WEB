@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { MedievalSharp } from "next/font/google";
 import { useRouter } from "next/navigation";
 import { getUsuarioLogado } from "@/actions/usuariologado";
+import { deslogarUsuario } from "@/actions/sairperfil"; // Ajuste o caminho conforme sua pasta
 
 const medievalSharp = MedievalSharp({
   weight: "400",
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: LayoutProps) {
 
     // Escuta o evento de atualização para atualizar o avatar em tempo real
     window.addEventListener("perfilAtualizado", carregarFotoLayout);
+    window.addEventListener("perfilAtualizado", carregarFotoLayout);
 
     return () => {
       window.removeEventListener("perfilAtualizado", carregarFotoLayout);
@@ -42,11 +44,19 @@ export default function RootLayout({ children }: LayoutProps) {
     router.push("/editarperfil?upload=true");
   }
 
+  async function handleLogout() {
+    const confirmou = window.confirm("Tem certeza que deseja sair?");
+    if (confirmou) {
+      setMenuAberto(false);
+      await deslogarUsuario();
+    }
+  }
+
   return (
     <html lang="pt-br">
       <body>
         <header>
-          <img src="/teste.png" id="logo" />
+          <img src="/teste.png" id="logo" alt="Logo" />
 
           <div className="container-avatar">
             <button
@@ -69,7 +79,9 @@ export default function RootLayout({ children }: LayoutProps) {
                 <button onClick={abrirModal} className="editar">
                   Editar Perfil
                 </button>
-                <button className="logout">Exit</button>
+                <button onClick={handleLogout} className="logout">
+                  Exit
+                </button>
               </div>
             )}
           </div>
