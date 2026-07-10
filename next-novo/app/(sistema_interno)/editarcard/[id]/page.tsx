@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import "../../sistema.css";
-// Se precisar, ajuste os caminhos dos CSS abaixo:
 import "../../../(sistema_interno)/criarcard/criarcard.css";
 
 interface NpcForm {
@@ -18,6 +17,7 @@ interface NpcForm {
   inteligencia: number;
   sabedoria: number;
   carisma: number;
+  imagem: string; // 👈 Adicionado na tipagem
 }
 
 interface Skill {
@@ -32,7 +32,6 @@ export default function NpcViewEditPage() {
   const router = useRouter();
   const id = params.id as string;
 
-  // ESTADO QUE CONTROLA SE ESTAMOS VENDO OU EDITANDO
   const [modoEdicao, setModoEdicao] = useState(false);
   const [carregando, setCarregando] = useState(true);
 
@@ -54,6 +53,7 @@ export default function NpcViewEditPage() {
     inteligencia: 10,
     sabedoria: 10,
     carisma: 10,
+    imagem: "", // 👈 Inicializado vazio
   });
 
   useEffect(() => {
@@ -63,7 +63,7 @@ export default function NpcViewEditPage() {
           fetch("https://www.dnd5eapi.co/api/skills"),
           fetch("https://www.dnd5eapi.co/api/classes"),
           fetch("https://www.dnd5eapi.co/api/races"),
-          fetch(`/api/npcs/${id}`), // Busca o NPC no nosso banco
+          fetch(`/api/npcs/${id}`),
         ]);
 
         const skillsData = await skillsReq.json();
@@ -86,6 +86,7 @@ export default function NpcViewEditPage() {
           inteligencia: npcData.intelligence,
           sabedoria: npcData.wisdom,
           carisma: npcData.charisma,
+          imagem: npcData.imagem || "", // 👈 Carrega a imagem que veio do banco
         });
 
         const npcsSkills = npcData.skills ? npcData.skills.split(",") : [];
@@ -156,7 +157,7 @@ export default function NpcViewEditPage() {
       if (!response.ok) throw new Error("Erro ao atualizar NPC");
 
       alert("NPC atualizado com sucesso!");
-      setModoEdicao(false); // Volta para o modo de visualização!
+      setModoEdicao(false);
     } catch (error) {
       console.error(error);
       alert("Erro ao enviar para o banco de dados.");
@@ -174,7 +175,7 @@ export default function NpcViewEditPage() {
   }
 
   // ==========================================
-  // MODO VISUALIZAÇÃO (Igual ao Modal da sua amiga)
+  // MODO VISUALIZAÇÃO
   // ==========================================
   if (!modoEdicao) {
     return (
@@ -210,11 +211,17 @@ export default function NpcViewEditPage() {
               marginBottom: "20px",
             }}
           >
+            {/*  EXIBE A IMAGEM ATUALIZADA OU O AVATAR PADRÃO */}
             <img
-              src="/avatar.png"
+              src={npc.imagem || "/avatar.png"}
               alt={npc.nome}
               className="modal-avatar"
-              style={{ width: "100px", borderRadius: "50%" }}
+              style={{
+                width: "120px",
+                height: "120px",
+                borderRadius: "50%",
+                objectFit: "cover", //
+              }}
             />
           </div>
 
@@ -311,6 +318,17 @@ export default function NpcViewEditPage() {
             onChange={(e) => alterarCampo("nome", e.target.value)}
           />
           {erros.nome && <span className="erro">{erros.nome}</span>}
+        </div>
+
+        {/* 👈 NOVO CAMPO: URL DA FOTO DE PERFIL */}
+        <div className="formSection">
+          <label>URL da Foto de Perfil (Link da imagem)</label>
+          <input
+            type="text"
+            placeholder="Cole aqui o endereço da imagem do Pinterest/Google"
+            value={npc.imagem}
+            onChange={(e) => alterarCampo("imagem", e.target.value)}
+          />
         </div>
 
         <div className="formSection">
