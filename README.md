@@ -16,15 +16,14 @@ Este projeto foi desenvolvido como o Trabalho Final para a disciplina **XDES03 �
 
 ### 2. Páginas de Informações Básicas do pré-sistema
 
-*A interface pré-login apresenta informações sobre o projeto além de dados sobre a equipe e possível forma de contado
+*A interface pré-login apresenta informações sobre o projeto além de dados sobre a equipe.
 
+- FOTO HOME
 - FOTO SOBRE
-- FOTO EQUIPE
-- FOTO CONTATO
 
 
 ### 3. Carrossel de Cards(Painel Principal)
-*Exibição dos cards de usúario com seus atributos, nome, imagem E classe*
+*Exibição dos cards de usúario com seus atributos, nome, imagem E classe, caso não haja card mensagem padrão*
 
 - FOTO CARROSSEL CARD
 
@@ -41,6 +40,11 @@ Este projeto foi desenvolvido como o Trabalho Final para a disciplina **XDES03 �
 ### 6. Perfil Visualizar
 *Área dedicada para visualizar os dados do jogador e a contagem total de cards criados.*
 
+### 7. Edicao Visualizar
+*Área dedicada para editar os dados do jogador e a contagem total de cards criados.*
+
+### 7. Edicao Visualizar
+*Área dedicada para feebacks do usuário.*
 ---
 
 ## Tecnologias Utilizadas
