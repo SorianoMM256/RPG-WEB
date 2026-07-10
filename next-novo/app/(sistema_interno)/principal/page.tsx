@@ -10,14 +10,18 @@ interface Personagem {
   classe: string;
   str: number;
   dex: number;
+  con: number;
+  int: number;
+  wis: number;
+  cha: number;
   imagem: string;
 }
 export default function Pagina() {
 
     const listaPersonagens: Personagem[] = [
-    { id: 1, nome: "Dwarf Barbarian", classe: "Guerreiro", str: 18, dex: 12, imagem: "/01.jpg" },
-    { id: 2, nome: "Elf Ranger", classe: "Arqueiro", str: 12, dex: 18, imagem: "/02.jpg" },
-    { id: 3, nome: "Human Mage", classe: "Mago", str: 10, dex: 14, imagem: "/03.jpg" },
+    { id: 1, nome: "Dwarf Barbarian", classe: "Guerreiro", str: 18, dex: 12, con:16,int:8,wis:10,cha:6, imagem: "/01.jpg" },
+    { id: 2, nome: "Elf Ranger", classe: "Arqueiro", str: 12, dex: 18,  con:16,int:8,wis:10,cha:6, imagem: "/02.jpg" },
+    { id: 3, nome: "Human Mage", classe: "Mago", str: 10, dex: 14,  con:16,int:8,wis:10,cha:6, imagem: "/03.jpg" },
     ];
 
     const [indiceAtual, setIndiceAtual] = useState(0);
@@ -48,7 +52,7 @@ export default function Pagina() {
 
         {listaPersonagens.length === 0 ? (
         <div className="vazio">
-          <p className="AVISO">Monte seu primeiro personagem no botão abaixo</p>
+          <p className="AVISO">Olá,<span>nome</span> monte seu primeiro personagem no botão abaixo</p>
         </div>
       ) : (
         <div className="carrossel">
@@ -68,8 +72,10 @@ export default function Pagina() {
                   <h3>{personagem.nome}</h3>
                   <img src={personagem.imagem || "/avatar.png"} alt={personagem.nome} className="card-avatar" />
                   <div className="status">
-                    <p>Classe: {personagem.classe}</p>
+                    <p>Classe: {personagem.classe}</p><br></br>
                     <p>STR: {personagem.str} | DEX: {personagem.dex}</p>
+                    <p>CON: {personagem.con} | CHA: {personagem.cha}</p>
+                    <p>INT: {personagem.int} | WIS: {personagem.wis}</p>
                   </div>
                 </div>
               );

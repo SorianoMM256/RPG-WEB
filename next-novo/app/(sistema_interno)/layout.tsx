@@ -31,9 +31,6 @@ export default function RootLayout({children}:LayoutProps){
             <header>
             <img src= "/teste.png" id="logo"/>
 
-            <nav className="menu-nav">
-            <Link href="/tutorial" className="tutorial">Tutorial</Link>    
-            </nav>
             <div className="container-avatar">
             <button className="btnperfil" onClick={() => setMenuAberto(!menuAberto)}><img src="/avatar.png" className="avatar" id="avatar"></img></button>
             
