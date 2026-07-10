@@ -2,6 +2,8 @@
 
 public/uploads
 
+prisma/rpg.db
+
 */rpg.db
 
 # dependencies
