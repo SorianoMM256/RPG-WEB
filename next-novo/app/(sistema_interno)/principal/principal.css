@@ -223,3 +223,108 @@
 
 }
 
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000; 
+  backdrop-filter: blur(4px); 
+}
+
+.modal-pergaminho {
+  position: relative;
+  width: 450px;
+  height: 600px;
+  background-image: url("/pergaminho02.png"); 
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  padding: 60px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #000;
+  animation: abrirModal 0.3s ease-out;
+}
+
+
+
+.modal-avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 3px solid #000;
+  margin: 15px 0;
+}
+
+.modal-status-grade {
+  width: 100%;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.atributos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.btn-fechar-modal {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  background: #973903;
+  color: white;
+  border: 2px solid #000;
+  border-radius: 5px;
+  width: 30px;
+  height: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+  margin-top: 40px;
+}
+
+.btn-fechar-modal:hover {
+  transform: scale(1.1);
+  background: #bd4a05;
+}
+
+@keyframes abrirModal {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.btn-ex{
+  background: #973903;
+  color: white;
+  border: 2px solid #000;
+  border-radius: 5px;
+  width: 100px;
+  height: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+  margin-top: 40px;
+}
+
+.btn-ex:hover {
+  transform: scale(1.1);
+  background: #bd4a05;
+}
