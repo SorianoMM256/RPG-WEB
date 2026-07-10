@@ -5,6 +5,7 @@ import { Upload, Loader2, Edit } from "lucide-react";
 import "../sistema.css";
 import "./editarperfil.css";
 import { editarPerfil, type FormState } from "@/actions/editarperfil";
+import { getUsuarioLogado } from "@/actions/usuariologado";
 
 //definir o que o frontend vai ficar pegando e retornando para o backend
 const initialState: FormState = {
@@ -20,7 +21,8 @@ export default function Page() {
   );
 }
 
-function EditarPerfil() {
+// os parametros servem pra receber as propriedades
+function EditarPerfil({ fotoInicial }: { fotoInicial?: string }) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -39,23 +41,63 @@ function EditarPerfil() {
     tipo: "erro" | "sucesso";
   } | null>(null);
 
-  //efeito
+  // ==========================================================================
+  // NOVO EFEITO: Monitora o resultado do envio para mostrar o alerta e avisar o layout
+  // ==========================================================================
   useEffect(() => {
     if (state?.msg) {
-      //cria alerta
+      // Ativa o alerta na tela com a mensagem que veio do seu arquivo .ts
       setAlerta({
         msg: state.msg,
         tipo: state.sucesso ? "sucesso" : "erro",
       });
 
-      const timer = setTimeout(() => {
-        setAlerta(null);
-      }, 4000);
-      return () => clearTimeout(timer);
+      if (state.sucesso) {
+        // DISPARA O SINAL: Avisa o Layout que a foto e dados mudaram no banco!
+        window.dispatchEvent(new Event("perfilAtualizado"));
+
+        // Aguarda 2 segundos para o usuário ver o alerta de sucesso e fecha o modal
+        const timer = setTimeout(() => {
+          fecharModal();
+          setAlerta(null);
+        }, 2000);
+
+        return () => clearTimeout(timer);
+      }
     }
   }, [state]);
 
-  const [imagemPreview, setImagemPreview] = useState<string | null>(null);
+  //efeito
+  useEffect(() => {
+    async function carregarFoto() {
+      // Chama a Server Action direto, sem precisar de fetch ou /api/
+      const dados = await getUsuarioLogado();
+
+      if (dados) {
+        setUsAtual(dados);
+
+        if (dados.foto) {
+          setImagemPreview(dados.foto);
+        }
+      }
+    }
+
+    if (modalAberto) {
+      carregarFoto();
+    }
+  }, [modalAberto]);
+
+  const [imagemPreview, setImagemPreview] = useState<string | null>(
+    fotoInicial || null,
+  );
+
+  //pega o atual usuario
+  const [usAtual, setUsAtual] = useState<{
+    nome?: string;
+    email?: string;
+    foto?: string | null;
+  } | null>(null);
+
   const [enviando, setEnviando] = useState(false);
   const inputFileRef = useRef<HTMLInputElement>(null);
 
@@ -76,31 +118,6 @@ function EditarPerfil() {
 
     const url = URL.createObjectURL(arquivo);
     setImagemPreview(url);
-
-    try {
-      setEnviando(true);
-
-      const formData = new FormData();
-      formData.append("file", arquivo);
-
-      const response = await fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!response.ok) {
-        throw new Error("Falha no upload");
-      }
-
-      const data = await response.json();
-      console.log("Upload concluído:", data);
-      setImagemPreview(data.url);
-    } catch (erro) {
-      console.error("Erro ao enviar imagem:", erro);
-      alert("Não foi possível enviar a imagem. Tente novamente.");
-    } finally {
-      setEnviando(false);
-    }
   }
 
   return (
@@ -135,13 +152,6 @@ function EditarPerfil() {
                 )}
               </button>
 
-              <input
-                type="file"
-                accept="image/*"
-                ref={inputFileRef}
-                onChange={handleFileChange}
-                style={{ display: "none" }}
-              />
               <div className="A2">
                 {/* ALERTA */}
                 {alerta && (
@@ -154,14 +164,33 @@ function EditarPerfil() {
                   </div>
                 )}
 
+                {/* FORMMMMMMMSS */}
                 <form action={formAction}>
+                  <input
+                    type="file"
+                    name="foto"
+                    accept="image/*"
+                    ref={inputFileRef}
+                    onChange={handleFileChange}
+                    style={{ display: "none" }}
+                  />
                   <div className="campos">
                     <input
                       type="text"
+                      name="nome"
                       className="nome"
                       placeholder="Nome de usuário"
+                      defaultValue={usAtual?.nome} // preenche com o nome do banco
+                      key={`nome-${usAtual?.nome}`}
                     />
-                    <input type="email" className="email" placeholder="Email" />
+                    <input
+                      type="email"
+                      name="email"
+                      className="email"
+                      placeholder="Email"
+                      defaultValue={usAtual?.email} // 👈 Preenche com o email do banco
+                      key={`email-${usAtual?.email}`} // força o React a atualizar quando o dado chegar
+                    />
                   </div>
 
                   <button className="Botao" type="submit" disabled={pending}>
