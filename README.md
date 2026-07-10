@@ -11,40 +11,42 @@ Este projeto foi desenvolvido como o Trabalho Final para a disciplina **XDES03 �
 ### 1. Tela de Login e Cadastro de Usuário
 *Interface para autenticação de usuários, contendo validações completas de campos vazios, formato de e-mail, e senha diferente da padrão utilizando a biblioteca Zod.*
 
-![Tela de cadastro](https://github.com/SorianoMM256/RPG-WEB/blob/5b428bddd2992a1e777a0da4e300f20b500e3904/home.png )
+![Tela de cadastro](https://github.com/SorianoMM256/RPG-WEB/blob/7b90e250aa9b042fe42d9699bc58658b7e08a1d3/criar.png)
 ![Tela de login](https://github.com/SorianoMM256/RPG-WEB/blob/5b428bddd2992a1e777a0da4e300f20b500e3904/login.jpg)
 
 ### 2. Páginas de Informações Básicas do pré-sistema
 
 *A interface pré-login apresenta informações sobre o projeto além de dados sobre a equipe.
 
-- FOTO HOME
-- FOTO SOBRE
+![Home](https://github.com/SorianoMM256/RPG-WEB/blob/5b428bddd2992a1e777a0da4e300f20b500e3904/home.png )
+![sobre](https://github.com/SorianoMM256/RPG-WEB/blob/7b90e250aa9b042fe42d9699bc58658b7e08a1d3/sobre.png)
 
 
 ### 3. Carrossel de Cards(Painel Principal)
 *Exibição dos cards de usúario com seus atributos, nome, imagem E classe, caso não haja card mensagem padrão*
 
-- FOTO CARROSSEL CARD
+![padrao](https://github.com/SorianoMM256/RPG-WEB/blob/7b90e250aa9b042fe42d9699bc58658b7e08a1d3/principal.jpg)
+![carrossel](https://github.com/SorianoMM256/RPG-WEB/blob/7b90e250aa9b042fe42d9699bc58658b7e08a1d3/carrosel.jpg)
 
 ### 4. Visualização do CARD
 *Tela que mostra todas as informações do card.*
 
-- FOTO VIZUALIZAÇÃO DO CARD
+![card](https://github.com/SorianoMM256/RPG-WEB/blob/7b90e250aa9b042fe42d9699bc58658b7e08a1d3/carrosel.jpg)
 
 ### 5. Edição do CARD
 *Espaço editar todas as informações desejadas.*
-![Tela de perfil](prints/perfilPrint.png)
-![Tela com resenha](prints/resenhaPrint.png)
 
 ### 6. Perfil Visualizar
 *Área dedicada para visualizar os dados do jogador e a contagem total de cards criados.*
+![perfil](https://github.com/SorianoMM256/RPG-WEB/blob/7b90e250aa9b042fe42d9699bc58658b7e08a1d3/perfil.jpg)
 
 ### 7. Edicao Visualizar
-*Área dedicada para editar os dados do jogador e a contagem total de cards criados.*
+*Área dedicada para editar os dados do jogador.*
+![perfil](https://github.com/SorianoMM256/RPG-WEB/blob/7b90e250aa9b042fe42d9699bc58658b7e08a1d3/editar.jpg)
 
-### 7. Edicao Visualizar
-*Área dedicada para feebacks do usuário.*
+### 8. Feedback
+*Área dedicada para feedbacks do usuário.*
+![feedback](https://github.com/SorianoMM256/RPG-WEB/blob/7b90e250aa9b042fe42d9699bc58658b7e08a1d3/feedback.jpg)
 ---
 
 ## Tecnologias Utilizadas
