@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import "../../sistema.css";
 import "../../../(sistema_interno)/criarcard/criarcard.css";
+import "./editar.css";
 
 interface NpcForm {
   nome: string;
@@ -179,49 +180,22 @@ export default function NpcViewEditPage() {
   // ==========================================
   if (!modoEdicao) {
     return (
-      <main
-        className="cardPage"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          minHeight: "100vh",
-        }}
-      >
-        <div
-          className="modal-pergaminho"
-          style={{ position: "relative", width: "90%", maxWidth: "500px" }}
-        >
+      <main className="cardPage">
+        <div className="modal-pergaminho">
           <button
             className="btn-fechar-modal"
             onClick={() => router.push("/principal")}
-            style={{ position: "absolute", top: "15px", right: "15px" }}
           >
             Voltar
           </button>
 
-          <h2 style={{ textAlign: "center", marginBottom: "15px" }}>
-            {npc.nome}
-          </h2>
+          <h2 className="modal-titulo">{npc.nome}</h2>
 
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              marginBottom: "20px",
-            }}
-          >
-            {/*  EXIBE A IMAGEM ATUALIZADA OU O AVATAR PADRÃO */}
+          <div className="modal-avatar-container">
             <img
               src={npc.imagem || "/avatar.png"}
               alt={npc.nome}
               className="modal-avatar"
-              style={{
-                width: "120px",
-                height: "120px",
-                borderRadius: "50%",
-                objectFit: "cover", //
-              }}
             />
           </div>
 
@@ -235,16 +209,10 @@ export default function NpcViewEditPage() {
             <p>
               <strong>Moral:</strong> {npc.moral}
             </p>
-            <hr />
-            <div
-              className="atributos-grid"
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: "10px",
-                textAlign: "center",
-              }}
-            >
+
+            <hr className="modal-divisor" />
+
+            <div className="atributos-grid">
               <p>STR: {npc.forca}</p>
               <p>DEX: {npc.destreza}</p>
               <p>CON: {npc.constituicao}</p>
@@ -252,7 +220,9 @@ export default function NpcViewEditPage() {
               <p>INT: {npc.inteligencia}</p>
               <p>WIS: {npc.sabedoria}</p>
             </div>
-            <hr />
+
+            <hr className="modal-divisor" />
+
             <div className="infos-extras">
               <p>
                 <strong>Skills:</strong>{" "}
@@ -269,25 +239,8 @@ export default function NpcViewEditPage() {
               </p>
             </div>
 
-            <div
-              style={{
-                display: "flex",
-                gap: "10px",
-                marginTop: "25px",
-                justifyContent: "center",
-              }}
-            >
-              <button
-                className="btn-ex"
-                onClick={() => setModoEdicao(true)}
-                style={{
-                  backgroundColor: "blue",
-                  color: "white",
-                  padding: "10px 20px",
-                  borderRadius: "8px",
-                  cursor: "pointer",
-                }}
-              >
+            <div className="modal-botoes-container">
+              <button className="btn-ex" onClick={() => setModoEdicao(true)}>
                 Editar Informações
               </button>
             </div>
@@ -301,7 +254,7 @@ export default function NpcViewEditPage() {
   // MODO EDIÇÃO (O Formulário)
   // ==========================================
   return (
-    <main className="cardPage">
+    <main className="cardPage modo-edicao-npc">
       <h1>Editando: {npc.nome}</h1>
 
       <form className="cardForm" onSubmit={atualizarNPC} noValidate>
@@ -320,7 +273,7 @@ export default function NpcViewEditPage() {
           {erros.nome && <span className="erro">{erros.nome}</span>}
         </div>
 
-        {/* 👈 NOVO CAMPO: URL DA FOTO DE PERFIL */}
+        {/* URL DA FOTO DE PERFIL */}
         <div className="formSection">
           <label>URL da Foto de Perfil (Link da imagem)</label>
           <input
@@ -497,12 +450,11 @@ export default function NpcViewEditPage() {
           </div>
         </div>
 
-        <div className="buttons" style={{ display: "flex", gap: "15px" }}>
+        <div className="buttons">
           <button
             type="button"
-            className="btnSalvar"
+            className="btnCancelar"
             onClick={() => setModoEdicao(false)}
-            style={{ backgroundColor: "gray" }}
           >
             Cancelar
           </button>
