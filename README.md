@@ -11,8 +11,8 @@ Este projeto foi desenvolvido como o Trabalho Final para a disciplina **XDES03 �
 ### 1. Tela de Login e Cadastro de Usuário
 *Interface para autenticação de usuários, contendo validações completas de campos vazios, formato de e-mail, e senha diferente da padrão utilizando a biblioteca Zod.*
 
-![Tela de cadastro](/criar.png )
-![Tela de login](login.png)
+![Tela de cadastro](https://github.com/SorianoMM256/RPG-WEB/blob/5b428bddd2992a1e777a0da4e300f20b500e3904/home.png )
+![Tela de login](https://github.com/SorianoMM256/RPG-WEB/blob/5b428bddd2992a1e777a0da4e300f20b500e3904/login.jpg)
 
 ### 2. Páginas de Informações Básicas do pré-sistema
 
