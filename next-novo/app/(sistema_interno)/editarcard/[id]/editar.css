@@ -1,0 +1,316 @@
+.cardPage {
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.cardPage h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    color: rgb(224, 109, 55);
+    transition: transform 0.3s ease, text-shadow 0.3s ease, color 0.3s ease;
+    text-shadow: 
+        0px 0px 5px rgba(0, 0, 0, 0.9), 
+        0px 0px 5px rgba(0, 0, 0, 0.9),
+        0px 0px 3px rgba(0, 0, 0, 0.9),
+        0px 0px 3px rgba(0, 0, 0, 0.9);
+    font-size: 50px;
+}
+
+.cardPage h1:hover {
+    transform: scale(1.05);
+    text-shadow: 
+        0 0 10px rgba(235, 91, 8, 0.774),  
+        0 0 20px rgba(99, 98, 98, 0.4),  
+        0 0 30px rgba(68, 68, 67, 0.2);
+}
+
+.cardForm {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.formSection {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.formSection label {
+    font-weight: bold;
+    color: rgb(252, 247, 244);
+    font-size: large;
+    text-shadow: 
+        0px 0px 5px rgba(0, 0, 0, 0.9), 
+        0px 0px 5px rgba(0, 0, 0, 0.9);
+}
+
+.formSection input,
+.formSection select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.formSection input::placeholder {
+    color: #666;
+}
+
+/* ==========================================
+   SISTEMA DE GRID DE ATRIBUTOS (CORRIGIDO)
+   ========================================== */
+
+.attributesGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.attribute {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.attribute label {
+    font-weight: bold;
+    color: rgb(252, 247, 244);
+    font-size: large;
+    text-align: center;
+    text-shadow: 
+        0px 0px 5px rgba(0, 0, 0, 0.9), 
+        0px 0px 5px rgba(0, 0, 0, 0.9);
+}
+
+.attribute input {
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-weight: bold;
+}
+
+/* ==========================================
+   CAIXA DE SKILLS
+   ========================================== */
+
+.skillsBox {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.skillsCabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background: white;
+    font-weight: bold;
+}
+
+.seta {
+    transition: .3s;
+}
+
+.seta.aberta {
+    transform: rotate(180deg);
+}
+
+.skillsLista {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 200px;
+    overflow-y: auto;
+    border-radius: 8px;
+    padding: 12px;
+    background-color: rgb(201, 199, 199);
+    border: solid 2px black;
+}
+
+.skillLinha {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: black;
+}
+
+.skillCheckbox {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.skillNome {
+    flex: 1;
+    font-weight: 500;
+}
+
+/* ==========================================
+   BOTÕES DE AÇÃO DO FORMULÁRIO
+   ========================================== */
+
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.buttons button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.buttons button:active {
+    transform: scale(0.98);
+}
+
+.btnCancelar {
+    background-color: #555555;
+    color: white;
+}
+
+.btnCancelar:hover {
+    background-color: #3c3c3c;
+}
+
+.btnSalvar {
+    background-color: rgb(224, 109, 55);
+    color: white;
+}
+
+.btnSalvar:hover {
+    background-color: rgb(185, 82, 33);
+}
+
+/* ==========================================
+   VALIDAÇÕES E ERROS
+   ========================================== */
+
+.erro {
+    display: block;
+    margin-top: 4px;
+    color: #d32f2f;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+input:invalid,
+select:invalid {
+    border: 1px solid #d32f2f;
+}
+
+input:focus:invalid,
+select:focus:invalid {
+    outline: none;
+    box-shadow: 0 0 4px #d32f2f;
+}
+
+
+.modo-edicao-npc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.modo-edicao-npc h1 {
+    font-size: 38px; 
+    margin-bottom: 20px;
+}
+
+.modo-edicao-npc .cardForm {
+    background-color: rgba(20, 20, 20, 0.88);
+    padding: 35px;
+    border-radius: 16px;
+    border: 2px solid rgb(224, 109, 55);
+    width: 100%;
+    max-width: 550px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+.btn-ex {
+  background-color: #7a1c1c; 
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+}
+
+.modal-botoes-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 25px;
+  justify-content: center;
+}
+.atributos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 10px;
+  text-align: center;
+  background-color: transparent; 
+  padding: 10px;
+}
+.modal-avatar-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.modal-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%; 
+  object-fit: cover;  
+  
+}
+.modal-titulo {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 24px;
+  color: #2b1d0c;
+}
+.btn-fechar-modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: 1px solid #333;
+  cursor: pointer;
+  
+}
+.modal-pergaminho {
+  position: relative;
+  width: 90%;
+  max-width: 500px;
+  background-color: #f4eccd; 
+  padding: 20px;
+  border-radius: 12px;
+}
+.cardPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  
+}
