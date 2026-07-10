@@ -43,7 +43,9 @@ Este projeto foi desenvolvido como o Trabalho Final para a disciplina **XDES03 �
 ![perfil](https://github.com/SorianoMM256/RPG-WEB/blob/7b90e250aa9b042fe42d9699bc58658b7e08a1d3/editar.jpg)
 
 ### 8. Feedback
+
 *Área dedicada para feedbacks do usuário.*
+
 ![feedback](https://github.com/SorianoMM256/RPG-WEB/blob/7b90e250aa9b042fe42d9699bc58658b7e08a1d3/feedback.jpg)
 ---
 
