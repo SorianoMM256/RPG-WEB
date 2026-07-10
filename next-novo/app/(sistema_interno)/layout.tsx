@@ -2,11 +2,9 @@
 
 import "./sistema.css";
 import Link from "next/link";
-// 1. Adicionamos o useEffect na importação do React
 import { useEffect, useState } from "react";
 import { MedievalSharp } from "next/font/google";
 import { useRouter } from "next/navigation";
-// 2. Importamos a Action que busca o usuário
 import { getUsuarioLogado } from "@/actions/usuariologado";
 
 const medievalSharp = MedievalSharp({
@@ -21,11 +19,8 @@ interface LayoutProps {
 export default function RootLayout({ children }: LayoutProps) {
   const router = useRouter();
   const [menuAberto, setMenuAberto] = useState(false);
-
-  // 3. Criamos um estado para guardar a foto do usuário
   const [fotoPerfil, setFotoPerfil] = useState<string | null>(null);
 
-  // 4. Buscamos a foto assim que o layout carregar
   useEffect(() => {
     async function carregarFotoLayout() {
       const dados = await getUsuarioLogado();
@@ -35,10 +30,9 @@ export default function RootLayout({ children }: LayoutProps) {
     }
     carregarFotoLayout();
 
-    // ADICIONADO: Escuta o evento de atualização para atualizar o avatar em tempo real!
+    // Escuta o evento de atualização para atualizar o avatar em tempo real
     window.addEventListener("perfilAtualizado", carregarFotoLayout);
 
-    // Limpa o ouvinte quando o componente desmontar (boa prática)
     return () => {
       window.removeEventListener("perfilAtualizado", carregarFotoLayout);
     };
@@ -54,13 +48,7 @@ export default function RootLayout({ children }: LayoutProps) {
         <header>
           <img src="/teste.png" id="logo" />
 
-          <nav className="menu-nav">
-            <Link href="/tutorial" className="tutorial">
-              Tutorial
-            </Link>
-          </nav>
           <div className="container-avatar">
-            {/* 5. Trocamos o src fixo pela variável fotoPerfil (com a imagem padrão de fallback) */}
             <button
               className="btnperfil"
               onClick={() => setMenuAberto(!menuAberto)}
