@@ -23,7 +23,7 @@ Este projeto foi desenvolvido como o Trabalho Final para a disciplina **XDES03 �
 
 
 ### 3. Carrossel de Cards(Painel Principal)
-*Exibição dos cards de usúario com seus atributos, nome, imagem E classe, caso não haja card mensagem padrão*
+*Exibição dos cards de usúario com seus atributos, nome, imagem e classe, caso não haja card mensagem padrão*
 
 ![padrao](https://github.com/SorianoMM256/RPG-WEB/blob/7b90e250aa9b042fe42d9699bc58658b7e08a1d3/principal.jpg)
 ![carrossel](https://github.com/SorianoMM256/RPG-WEB/blob/7b90e250aa9b042fe42d9699bc58658b7e08a1d3/carrosel.jpg)
@@ -32,7 +32,7 @@ Este projeto foi desenvolvido como o Trabalho Final para a disciplina **XDES03 �
 *Tela que mostra todas as informações do card.*
 
 ### 5. Edição do CARD
-*Espaço editar todas as informações desejadas.*
+*Espaço para editar todas as informações desejadas.*
 
 ### 6. Perfil Visualizar
 *Área dedicada para visualizar os dados do jogador e a contagem total de cards criados.*
