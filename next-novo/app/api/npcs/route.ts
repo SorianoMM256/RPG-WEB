@@ -9,11 +9,10 @@ export async function POST(request: Request) {
     const cookieStore = await cookies();
     const token = cookieStore.get("session")?.value;
 
-
     if (!token) {
       return NextResponse.json(
         { message: "Usuário não autenticado." },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -27,7 +26,7 @@ export async function POST(request: Request) {
     if (!body.nome || !body.classe || !body.raca) {
       return NextResponse.json(
         { message: "Dados obrigatórios não informados." },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -54,13 +53,21 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json(npc, { status: 201 });
-
   } catch (error) {
     console.error(error);
 
     return NextResponse.json(
       { message: "Erro ao criar NPC." },
-      { status: 500 }
+      { status: 500 },
     );
+  }
+}
+
+export async function GET() {
+  try {
+    const npcs = await prisma.npc.findMany(); // Busca todos os NPCs do banco
+    return NextResponse.json(npcs, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ error: "Erro ao buscar NPCs" }, { status: 500 });
   }
 }
