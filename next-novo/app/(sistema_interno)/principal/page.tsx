@@ -2,9 +2,8 @@
 import Link from "next/link";
 import "../sistema.css";
 import "./principal.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-// 1. AJUSTE NA INTERFACE: Nomes alinhados com o Banco de Dados (Prisma)
 interface Personagem {
   id: string;
   name: string;
@@ -23,32 +22,27 @@ interface Personagem {
 }
 
 export default function Pagina() {
-  // ATENÇÃO: Essa lista ainda é de dados "falsos" (mock).
-  // No futuro, vocês farão um useEffect aqui para dar um fetch() e puxar os reais do banco!
-  const listaPersonagens: Personagem[] = [
-    {
-      id: "1",
-      name: "Dwarf Barbarian",
-      className: "Guerreiro",
-      race: "Anão",
-      alignment: "Caótico e Bom",
-      strength: 18,
-      dexterity: 12,
-      constitution: 16,
-      intelligence: 8,
-      wisdom: 10,
-      charisma: 6,
-      skills: "Atletismo, Intimidação",
-      equipment: "Machado Grande, Poção de Vida",
-      imagem: "/01.jpg",
-    },
-    // ... adicionei os dados extras necessários na interface
-  ];
-
+  // Agora a lista começa vazia e vai ser preenchida pelo banco de dados
+  const [listaPersonagens, setListaPersonagens] = useState<Personagem[]>([]);
   const [indiceAtual, setIndiceAtual] = useState(0);
-
   const [personagemSelecionado, setPersonagemSelecionado] =
     useState<Personagem | null>(null);
+
+  // BUSCA OS DADOS NO BANCO ASSIM QUE A TELA ABRE
+  useEffect(() => {
+    async function carregarNPCs() {
+      try {
+        const response = await fetch("/api/npcs");
+        if (response.ok) {
+          const dados = await response.json();
+          setListaPersonagens(dados);
+        }
+      } catch (error) {
+        console.error("Erro ao carregar NPCs:", error);
+      }
+    }
+    carregarNPCs();
+  }, []);
 
   const voltarCard = () => {
     if (listaPersonagens.length === 0) return;
@@ -72,33 +66,30 @@ export default function Pagina() {
     return "card-escondido";
   };
 
-  // 2. FUNÇÃO QUE CHAMA A NOSSA ROTA DE DELETE NO BACKEND
+  // FUNÇÃO DE DELETAR COM ATUALIZAÇÃO DA TELA
   async function deletarPersonagem(id: string) {
     const confirmacao = confirm("Tem certeza que deseja excluir este NPC?");
     if (!confirmacao) return;
 
     try {
-      const response = await fetch(`/api/npcs/${id}`, {
-        method: "DELETE",
-      });
-
+      const response = await fetch(`/api/npcs/${id}`, { method: "DELETE" });
       if (!response.ok) throw new Error("Erro ao deletar");
 
       alert("NPC deletado com sucesso!");
+
+      // Tira o personagem da tela na mesma hora
+      setListaPersonagens((prev) => prev.filter((npc) => npc.id !== id));
       setPersonagemSelecionado(null);
-      // Aqui, futuramente, vocês vão recarregar a lista de NPCs chamando o backend de novo
+      setIndiceAtual(0);
     } catch (error) {
       console.error(error);
       alert("Erro ao excluir personagem.");
     }
   }
 
-  // 3. FUNÇÃO QUE VAI CHAMAR A ROTA DE PUT (Ainda precisa da tela de edição)
   function editarPersonagem(id: string) {
-    alert(
-      "Aqui futuramente abrirá a tela de edição para salvar no Banco de Dados!",
-    );
-    // Lógica para enviar para a tela de Update irá aqui.
+    // Redireciona para a futura tela de edição
+    window.location.href = `/editarcard/${id}`;
   }
 
   return (
@@ -106,7 +97,7 @@ export default function Pagina() {
       {listaPersonagens.length === 0 ? (
         <div className="vazio">
           <p className="AVISO">
-            Olá, monte seu primeiro personagem no botão abaixo
+            Olá, monte seu primeiro personagem no botão abaixo!
           </p>
         </div>
       ) : (
@@ -173,7 +164,7 @@ export default function Pagina() {
         ></Link>
       </div>
 
-      {/* MODAL PÁGINA DE VISUALIZAÇÃO DO CARD */}
+      {/* MODAL COM TODAS AS INFORMAÇÕES */}
       {personagemSelecionado && (
         <div
           className="modal-overlay"
@@ -207,9 +198,7 @@ export default function Pagina() {
               <p>
                 <strong>Moral:</strong> {personagemSelecionado.alignment}
               </p>
-
               <hr />
-
               <div className="atributos-grid">
                 <p>STR: {personagemSelecionado.strength}</p>
                 <p>DEX: {personagemSelecionado.dexterity}</p>
@@ -218,10 +207,7 @@ export default function Pagina() {
                 <p>INT: {personagemSelecionado.intelligence}</p>
                 <p>WIS: {personagemSelecionado.wisdom}</p>
               </div>
-
               <hr />
-
-              {/* Informações adicionais do banco */}
               <div className="infos-extras">
                 <p>
                   <strong>Skills:</strong>{" "}
@@ -233,7 +219,6 @@ export default function Pagina() {
                 </p>
               </div>
 
-              {/* Botões de Ação */}
               <div style={{ display: "flex", gap: "10px", marginTop: "15px" }}>
                 <button
                   className="btn-ex"
@@ -242,7 +227,6 @@ export default function Pagina() {
                 >
                   Editar card
                 </button>
-
                 <button
                   className="btn-ex"
                   onClick={() => deletarPersonagem(personagemSelecionado.id)}
