@@ -9,10 +9,13 @@
     grid-template-areas: "A1 A2";
     width: 100%;
     height: 210px;
-    background: rgb(150, 86, 3);
+    background: rgb(117, 70, 8);
     align-items: center;
     padding: 20px;
+    box-shadow: 12px 3px 5px black;
+    
 }
+
 
 .imgpag{
     grid-area: A1;
@@ -30,9 +33,38 @@
 
 .h3_1{
     margin-bottom: 20px;
+    font-size: 40px;
 }
 
 .h1_1{
     margin-bottom: 20px;
-    font-size: xx-large;
+    font-size: 40px;
+}
+
+.h3_2{
+    font-size: 25px;
+}
+
+.corpo h2{
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    font-size: 80px;
+    transition: transform 0.3s ease-in-out, text-shadow 0.3s ease, color 0.3s ease;
+    text-shadow: 
+    0px 0px 5px rgba(0, 0, 0, 0.9), 
+    0px 0px 5px rgba(0, 0, 0, 0.9),
+    0px 0px 3px rgba(0, 0, 0, 0.9),
+    0px 0px 3px rgba(0, 0, 0, 0.9);
+    margin-top: 20px;
+    margin-left: 20px;
+    transform-origin: center; 
+}
+
+.corpo h2:hover{
+    transform: transformZ(100px);
+    text-shadow: 
+        0 0 10px rgba(228, 227, 223, 0.6),  
+        0 0 20px rgba(99, 98, 98, 0.4),  
+        0 0 30px rgba(68, 68, 67, 0.2);
 }

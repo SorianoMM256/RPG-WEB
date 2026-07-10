@@ -17,7 +17,7 @@ export default function RootLayout({children}:LayoutProps){
         <html lang = "pt-br">
             <body>
             <header>
-            <img src= "/teste.png" id="logo"/>
+            <img src= "/logo.png" id="logo"/>
 
             <nav className="menu-nav">
             <Link href="/inicio" className="Home">Home</Link>    

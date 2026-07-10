@@ -56,7 +56,7 @@ export default function RootLayout({ children }: LayoutProps) {
     <html lang="pt-br">
       <body>
         <header>
-          <img src="/teste.png" id="logo" alt="Logo" />
+          <img src="/logo.png" id="logo" alt="Logo" />
 
           <div className="container-avatar">
             <button

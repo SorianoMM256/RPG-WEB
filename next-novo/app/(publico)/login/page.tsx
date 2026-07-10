@@ -58,7 +58,7 @@ export default function Login() {
   return (
     <main>
       <div className="LoginBox">
-        <img src="/teste.png" id="logo"></img>
+        <img src="/logo2.png" id="logo"></img>
         {/* verificar se o alerta existe: */}
         {alerta && (
           <div className={`alerta-container ${alerta.tipo}`}>

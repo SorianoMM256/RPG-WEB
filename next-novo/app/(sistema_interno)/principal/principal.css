@@ -19,9 +19,14 @@
   position: absolute;
   width: 220px;
   height: 320px;
-  background-color: #fffdec; 
-  border: 4px solid #1c4217; 
-  border-radius: 12px;
+  background-image: url("/pergaminho03.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  background-color: #e2d1b6; 
+  border-radius: 14px;
+  background-color: transparent;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -43,7 +48,7 @@
 .card-esquerda {
   z-index: 1;
   transform: translateX(-100px) translateY(15px) rotate(-15deg) scale(0.9);
-  opacity: 0.8;
+  opacity: 1;
 }
 
 .card-centro {
@@ -56,7 +61,7 @@
 .card-direita {
   z-index: 1;
   transform: translateX(100px) translateY(15px) rotate(15deg) scale(0.9);
-  opacity: 0.8;
+  opacity: 1;
 }
 
 .card-escondido {
@@ -113,6 +118,7 @@
         0 0 10px rgba(228, 227, 223, 0.6),  
         0 0 20px rgba(99, 98, 98, 0.4),  
         0 0 30px rgba(68, 68, 67, 0.2);
+
   
 }
 
