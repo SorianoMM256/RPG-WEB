@@ -41,25 +41,23 @@ function EditarPerfil({ fotoInicial }: { fotoInicial?: string }) {
     tipo: "erro" | "sucesso";
   } | null>(null);
 
-  // ==========================================================================
-  // NOVO EFEITO: Monitora o resultado do envio para mostrar o alerta e avisar o layout
-  // ==========================================================================
+  // MONITOR DE ENVIO: Mostra o alerta, avisa o layout e redireciona para a principal
   useEffect(() => {
     if (state?.msg) {
-      // Ativa o alerta na tela com a mensagem que veio do seu arquivo .ts
       setAlerta({
         msg: state.msg,
         tipo: state.sucesso ? "sucesso" : "erro",
       });
 
       if (state.sucesso) {
-        // DISPARA O SINAL: Avisa o Layout que a foto e dados mudaram no banco!
+        // Avisa o Layout para atualizar o avatar em tempo real
         window.dispatchEvent(new Event("perfilAtualizado"));
 
-        // Aguarda 2 segundos para o usuário ver o alerta de sucesso e fecha o modal
+        // Aguarda 2 segundos com o alerta na tela, fecha o modal e vai para a Home
         const timer = setTimeout(() => {
           fecharModal();
           setAlerta(null);
+          router.push("/principal"); // 👈 Copie esta linha! Redireciona para a tela principal
         }, 2000);
 
         return () => clearTimeout(timer);
