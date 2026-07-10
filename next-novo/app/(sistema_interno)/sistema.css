@@ -74,7 +74,6 @@ header{
   margin: 0;
 }
 
-
 .side-bar {
   display: flex;
   flex-direction: column;
@@ -168,4 +167,25 @@ header{
 .menuzinho a:hover, .menuzinho button:hover {
   color: #e4e3df;
   transform: scale(1.05);
+}
+
+/* Remove qualquer estilo, borda ou fundo do botão */
+.btnperfil {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+}
+
+/* Deixa a foto 100% redonda e limpa */
+.avatar {
+  width: 50px;          /* Ajuste o tamanho (largura) que preferir aqui */
+  height: 50px;         /* A altura DEVE ser exatamente igual à largura */
+  border-radius: 10%;   /* Deixa perfeitamente redondo */
+  object-fit: cover;    /* Recorta imagens retangulares para virarem um círculo perfeito */
+  border: none;         /* Garante que não haverá nenhuma borda */
+  box-shadow: none;     /* Garante que não haverá nenhuma sombra */
 }
