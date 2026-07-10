@@ -31,9 +31,10 @@ model Npc {
   wisdom       Int      @default(10)
   charisma     Int      @default(10)
 
-  // Mudamos String[] para String
-  skills       String   @default("") // Vamos salvar como: "athletics,stealth"
-  equipment    String   @default("") // Vamos salvar como: "longsword,shield"
+  skills       String   @default("") 
+  equipment    String   @default("") 
+
+  imagem       String?  // ADICIONADO AQUI PARA A FOTO DO PERFIL
 
   userId       String
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
