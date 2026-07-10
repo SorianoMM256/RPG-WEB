@@ -44,6 +44,7 @@ export default function CreateCardPage() {
     carisma: 0,
   });
 
+   
   useEffect(() => {
 
       async function carregarDados() {
@@ -197,7 +198,6 @@ export default function CreateCardPage() {
         .filter(skill => skill.selecionado)
         .map(skill => skill.nome),
 
-      userId: "", // será preenchido pela autenticação
     };
 
     try {
