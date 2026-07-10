@@ -37,6 +37,14 @@ export default function Login() {
         tipo: state.sucesso ? "sucesso" : "erro",
       });
 
+      //redirecionamento!
+      // PRECISA FAZER AQUI, ja que so entra caso haja VALIDAÇÃO
+      if (state.sucesso) {
+        const timerRouter = setTimeout(() => {
+          router.push("/principal");
+        });
+      }
+
       //bomba relogio! pra sumir a msg
       const timer = setTimeout(() => {
         setAlerta(null);
@@ -73,12 +81,7 @@ export default function Login() {
           <label htmlFor="loginsenha">Senha:</label>
           <input type="password" id="loginsenha" name="senha"></input>
 
-          <button
-            className="btnlogar"
-            type="submit"
-            onClick={() => router.push("/principal")}
-            disabled={pending}
-          >
+          <button className="btnlogar" type="submit" disabled={pending}>
             {pending ? "Entrando..." : "Entrar"} {/* Ou um ou outro! */}
           </button>
 
