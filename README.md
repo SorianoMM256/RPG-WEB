@@ -31,8 +31,6 @@ Este projeto foi desenvolvido como o Trabalho Final para a disciplina **XDES03 �
 ### 4. Visualização do CARD
 *Tela que mostra todas as informações do card.*
 
-![card](https://github.com/SorianoMM256/RPG-WEB/blob/7b90e250aa9b042fe42d9699bc58658b7e08a1d3/carrosel.jpg)
-
 ### 5. Edição do CARD
 *Espaço editar todas as informações desejadas.*
 
