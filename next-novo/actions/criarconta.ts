@@ -2,6 +2,20 @@
 
 import { prisma } from "@/lib/prisma";
 import bcrypt from "bcrypt";
+import { z } from "zod"; // 👈 ADICIONADO: Importando a biblioteca de validação Zod
+
+// 👈 ADICIONADO: Esquema de validação do Zod para o Cadastro (Garante nome, e-mail válido, senha forte e checa igualdade)
+const cadastroSchema = z
+  .object({
+    nome: z.string().min(2, "O nome deve ter pelo menos 2 caracteres!"),
+    email: z.string().email("Insira um formato de e-mail válido!"),
+    senha: z.string().min(4, "A senha deve ter pelo menos 4 dígitos!"),
+    confirmacao: z.string(),
+  })
+  .refine((dados) => dados.senha === dados.confirmacao, {
+    message: "As senhas estão incompatíveis.",
+    path: ["confirmacao"],
+  });
 
 export type FormState = {
   msg: string;
@@ -27,9 +41,18 @@ export async function criarConta(
   //cria para quando retornar (caso dê erro) as infos preenchidas
   const fields = { nome, email };
 
-  if (!email || !nome || !senha || !confirmacao) {
-    //retorna fields e msg pro frontend
-    return { msg: "Preencha todas as informações!", sucesso: false, fields };
+  // 👈 ADICIONADO: Substituindo o "verificar se tá tudo preenchido" manual pela validação oficial do Zod
+  const validacao = cadastroSchema.safeParse({
+    nome,
+    email,
+    senha,
+    confirmacao,
+  });
+
+  if (!validacao.success) {
+    // 👈 CORRIGIDO: Usando .issues ao invés de .errors para o TypeScript aceitar
+    const erroMensagem = validacao.error.issues[0].message;
+    return { msg: erroMensagem, sucesso: false, fields };
   }
 
   // 1. verificar se o email ja ta cadastrado
@@ -42,14 +65,6 @@ export async function criarConta(
       msg: "Email já está em uso! Adicione outro.",
       sucesso: false,
       fields, //sempre retorna o fields!
-    };
-  }
-  //verificar se ta tudo preenchido
-  if (senha != confirmacao) {
-    return {
-      msg: "As senhas estão incompatíveis.",
-      sucesso: false,
-      fields,
     };
   }
 

@@ -5,6 +5,13 @@ import { prisma } from "@/lib/prisma";
 import bcrypt from "bcrypt";
 import { SignJWT } from "jose";
 import { cookies } from "next/headers";
+import { z } from "zod"; // 👈 ADICIONADO: Importando a biblioteca de validação Zod
+
+// 👈 ADICIONADO: Esquema de validação do Zod para o Login
+const loginSchema = z.object({
+  email: z.string().email("Por favor, insira um e-mail válido!"),
+  senha: z.string().min(1, "A senha é obrigatória!"),
+});
 
 export type FormState = {
   msg: string; //mensagem de status em relacao ao login
@@ -21,9 +28,14 @@ export async function login(
   const senha = formData.get("senha")?.toString() || "";
 
   // 1. se estiverem vazios!
-  if (!email || !senha) {
+  // 👈 ADICIONADO: Agora o Zod faz uma validação muito mais rigorosa (formato do email e se está vazio)
+  const validacao = loginSchema.safeParse({ email, senha });
+
+  if (!validacao.success) {
+    // 👈 CORRIGIDO: Usando .issues ao invés de .errors para o TypeScript aceitar
+    const erroMensagem = validacao.error.issues[0].message;
     return {
-      msg: "Preencha todas as informações",
+      msg: erroMensagem,
       sucesso: false,
       email: email,
     };
