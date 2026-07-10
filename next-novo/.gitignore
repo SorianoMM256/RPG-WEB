@@ -2,6 +2,8 @@
 
 public/uploads
 
+*/rpg.db
+
 # dependencies
 /node_modules
 /.pnp

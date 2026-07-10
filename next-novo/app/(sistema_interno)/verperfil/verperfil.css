@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.cabeca{
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-areas: "A1 A2";
+    width: 100%;
+    height: 210px;
+    background: rgb(150, 86, 3);
+    align-items: center;
+    padding: 20px;
+}
+
+.imgpag{
+    grid-area: A1;
+    padding: 15px;
+
+}
+
+.imgpag img{
+    width: 180px;
+}
+
+.infopag{
+    grid-area: A2;
+}
+
+.h3_1{
+    margin-bottom: 20px;
+}
+
+.h1_1{
+    margin-bottom: 20px;
+    font-size: xx-large;
+}
