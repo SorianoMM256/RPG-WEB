@@ -2,7 +2,7 @@
 
 public/uploads
 
-*/rpg.db
+*.db
 
 # dependencies
 /node_modules
